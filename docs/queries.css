@@ -1,0 +1,67 @@
+@media(max-width : 430px){
+    .team-buttons {
+        width: 120px;
+        font-size: 12px;
+    }
+    .toss-buttons{
+        width: 140px;
+        font-size: 18px;
+    }
+    .wicketbuttons{
+        width: 125px;
+        font-size: 16px;
+    }
+    #tossResult{
+        width: 275px;
+        font-size: 15px;
+    }
+    #startMatch{
+        width: 270px;
+        font-size: 16px;
+    }
+    .main-container{
+        width: 410px;
+    }
+    .innings,
+    #matchResult{
+        width: 95%;
+        align-self: center;
+        font-size: 16px;
+    }
+}
+@media(max-width:400px){
+    .main-container {
+        width: 340px;
+    }
+    .team-selection{
+        grid-template-columns: repeat(2,1fr);
+    }
+    #wickets-content{
+        flex-direction: column;
+    }
+    .toss-winner {
+        align-items: center;
+    }    
+    .toss-head{
+        font-size: 14px;
+    }
+    #tosswinner{
+        font-size: 12px;
+    }
+    .options-button {
+        font-size: 17px;
+        width: 55px;
+        height: 55px;
+    }
+}
+@media(max-width:325px){
+    .main-container {
+        width: 300px;
+    }
+    #user-name, #comp-name {
+        font-size: 17px;
+    }
+    .user-content, .comp-content {
+        font-size: 17px;
+    }
+}

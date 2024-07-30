@@ -1,0 +1,397 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: "Rubik";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+header{
+    color: #fff;
+    background-color: black;
+    width: 98vw;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: 800;
+    word-spacing: 10px;
+    letter-spacing: 1px;
+}
+.team-selection{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 100px;
+}
+.toss-block{
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#tossBlock{
+    display: none;
+}
+#toss-content,
+#wickets-content{
+    display: flex;
+    gap: 10px;
+}
+#wickets-content{
+    display: none;
+}
+#toss-choice{
+    display: flex;
+    gap: 10px;
+    display: none;
+}
+.team-buttons{
+    border: none;
+    border-radius: 14px;
+}
+.team-buttons,
+.toss-buttons,
+.wicketbuttons{
+    width: 150px;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 0;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: cadetblue;
+    color: #fff;
+    border-bottom: 7px solid #346061;
+    border-right: 5px solid #346061;
+}
+.team-buttons{
+    width: 175px;
+}
+/* .teams{
+    width: 165px;
+    height: 165px;
+}
+.small-teams{
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
+.teams:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 2px #2D2829;
+} */
+ .teams{
+    cursor: pointer;
+ }
+.australia{
+    background-color: #F6C445;
+    border-color: #ae8c35;
+}
+.australia:hover{
+    background-color: #e5b948;
+}
+.afghanistan{
+    background-color: #3695CB;
+    border-color: #235f81;
+}
+.afghanistan:hover{
+    background-color: #4eb5f0;
+}
+.bangladesh{
+    background-color: #016b4f;
+    border-color: #22463d;
+}
+.bangladesh:hover{
+    background-color: #159c79;
+}
+.england{
+    background-color: #1514d4;
+    border-color: #17175e;
+}
+.england:hover{
+    background-color: #5150f1;
+}
+.india{
+    background-color: #9AC5E5;
+    border-color: #416076;
+}
+.india:hover{
+    background-color: #6eb3e5;
+}
+.newzealand{
+    background-color: #2D2829;
+    border-color: #000000;
+}
+.newzealand:hover{
+    background-color: #433c3e;
+}
+.pakistan{
+    background-color: #07381b;
+    border-color: #041a0d;
+}
+.pakistan:hover{
+    background-color: #175e34;
+}
+.safrica{
+    background-color: #1d5e24;
+    border-color: #153c19;
+}
+.safrica:hover{
+    background-color: #307637;
+}
+.srilanka{
+    background-color: #315098;
+    border-color: #203566;
+}
+.srilanka:hover{
+    background-color: #4b6fc4;
+}
+.usa{
+    background-color: #bf0001;
+    border-color: #710d0e;
+}
+.usa:hover{
+    background-color: #ca3d3e;
+}
+.windies{
+    background-color: #781349;
+    border-color: #4c0d2f;
+}
+.windies:hover{
+    background-color: #84315d;
+}
+#tossResult{
+    background-color: black;
+    padding: 15px 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 10px;
+    display: none;
+    text-align: center;
+    width: 294px;
+    max-width: 310px;
+}
+.toss-buttons:hover,
+.wicketbuttons:hover{
+    cursor: pointer;
+    background-color: rgb(121, 197, 200);
+}
+.toss-buttons:active,
+.wicketbuttons:active{
+    background-color: rgb(68, 154, 157);
+    border-bottom: 3px solid #346061;
+    border-right: 2px solid #346061;
+}
+#startMatch{
+    background-color: #de2020;
+    padding: 15px 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 10px;
+    display: none;
+    text-align: center;
+    width: 294px;
+    max-width: 310px;
+    border-bottom: 7px solid #b03333;
+    border-right: 4px solid #b03333;
+}
+#startMatch:hover{
+    cursor: pointer;
+    background-color: #e94040;
+}
+#startMatch:active{
+    background-color: #ca1d1d;
+    border-bottom: 5px solid #b03333;
+    border-right: 2px solid #b03333;
+}
+.main-container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 450px;
+    display: none;
+}
+.format-head{
+    width: 100%;
+    background-color: yellow;
+    text-align: center;
+    padding: 4px 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+.user-content,
+.comp-content{
+    font-size: 18px;
+}
+.mini-score-block{
+    display: flex;
+    justify-content: space-around;
+    gap: 4px;
+    align-items: center;
+    position: relative;
+}
+.mini-comp-score-block{
+    display: flex;
+    justify-content: space-around;
+    gap: 4px;
+    align-items: center;
+    position: relative;
+}
+.user-mini-score,
+.comp-mini-score{
+    top: 30px;
+    right: -30px;
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(37, 184, 37);
+    opacity: 0;
+}
+.user-mini-score-show,
+.comp-mini-score-show{
+   transform:translateY(-30px);
+   opacity: 1;
+   transition: 0.4s;
+}
+#user-name,
+#comp-name{
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
+#user-slash,
+#comp-slash{
+    font-weight: 600;
+}
+.score-block{
+    display: flex;
+    justify-content: space-evenly;
+    /* width: 125%; */
+}
+.score-content{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.score-section{
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+#comp-score-content,
+#user-yet{
+    display: none;
+}
+#comp-yet-bat,
+#user-yet-bat{
+    font-weight: 600;
+}
+.options-block{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.options-button{
+    border: none;
+    font-size: 20px;
+    width: 65px;
+    height: 65px;
+    border-radius: 65px;
+    background-color: rgb(161 235 222);
+    color: white;
+    font-weight: 600;
+    border-bottom-color: black;
+    border-bottom: 4px solid #63b3a5;
+    border-right: 3px solid #63b3a5;
+}
+.options-button:hover{
+    cursor: pointer;
+    background-color: rgb(191, 255, 243);
+}
+.options-button:active{
+    background-color: rgb(107, 223, 202);
+}
+#optionShowCpu{
+    display: none;
+}
+.toss-winner{
+    display: flex;
+    justify-content: center;
+   gap: 5px;
+}
+.toss-head{
+    font-weight: 600;
+}
+#hat-trick{
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+#on-hat-trick,
+#hattrick{
+    background-color: #b03333;
+    color: #fff;
+    padding: 14px 18px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 6px;
+    display: none;
+}
+#hattrick{
+    background-color: #de2020;
+}
+#target-block{
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    display: none;
+}
+#target{
+    text-align: center;
+}
+#target-score{
+    font-weight: 600;
+}
+#requiredruns{
+text-align: center;
+display: none;
+}
+#matchResult{
+    width: 100%;
+    padding: 10px 0;
+    background-color: black;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    display: none;
+    text-align: center;
+    border-radius: 6px;
+}
+.innings{
+    border: none;
+    font-size: 20px;
+    width: 100%;
+    padding: 6px 0;
+    border-radius: 6px;
+    background-color: rgb(236, 89, 63);
+    color: white;
+    font-weight: 600;
+    display: none;
+}
+.innings:hover{
+    cursor: pointer;
+    background-color: rgb(227, 112, 92);
+}
+.innings:active{
+    background-color: rgb(254, 87, 57);
+}
+#innings-show{
+    display: none;
+}

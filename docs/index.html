@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="queries.css">
+</head>
+<body>
+    <header>
+        <h2 class="main-head">HEADS & TAILS</h2>
+    </header>
+    <div class="team-selection" id="selectteam">
+<button class="team-buttons australia teams">AUSTRALIA</button>
+<button class="team-buttons afghanistan teams">AFGHANISTAN</button>
+<button class="team-buttons bangladesh teams">BANGLADESH</button>
+<button class="team-buttons england teams">ENGLAND</button>
+<button class="team-buttons india teams">INDIA</button>
+<button class="team-buttons newzealand teams">NEW-ZEALAND</button>
+<button class="team-buttons pakistan teams">PAKISTAN</button>
+<button class="team-buttons safrica teams">SOUTH-AFRICA</button>
+<button class="team-buttons srilanka teams">SRI-LANKA</button>
+<button class="team-buttons usa teams">USA</button>
+<button class="team-buttons windies teams">WEST-INDIES</button>
+        <!-- <img class="team-buttons teams" id="AUSTRALIA" src="videos/aus-img.jfif" alt="">
+        <img class="team-buttons teams" id="AFGHANISTAN" src="videos/afg-img.jfif" alt="">
+        <img class="team-buttons teams" id="BANGLADESH" src="videos/ban-img.jfif" alt="">
+        <img class="team-buttons teams small-teams" id="ENGLAND" src="videos/uk-img.jfif" alt="">
+        <img class="team-buttons teams" id="INDIA" src="videos/india-img.jpg" alt="">
+        <img class="team-buttons teams" id="NEW-ZEALAND" src="videos/nz-img.jpg" alt="">
+        <img class="team-buttons teams" id="PAKISTAN" src="videos/pak-image.png" alt="">
+        <img class="team-buttons teams" id="SOUTH-AFRICA" src="videos/sa-img.jpg" alt="">
+        <img class="team-buttons teams" id="SRI-LANKA" src="videos/sl-img.jpg" alt="">
+        <img class="team-buttons teams small-teams" id="USA" src="videos/usa-img.png" alt="">
+        <img class="team-buttons teams" id="WEST-INDIES" src="videos/wi-img.png" alt=""> -->
+    </div>
+    <div class="toss-block" id="tossBlock">
+        <div id="toss-content">
+        <button class="toss-buttons tossChoice" id="heads">HEADS</button>
+        <button class="toss-buttons tossChoice" id="tails">TAILS</button>
+    </div>
+        <div id="wickets-content">
+        <button class="wicketbuttons wicketsChoice" id="threeWickets">THREE</button>
+        <button class="wicketbuttons wicketsChoice" id="fiveWickets">FIVE</button>
+        <button class="wicketbuttons wicketsChoice" id="tenWickets">TEN</button>
+    </div>
+        <div id="toss-choice">
+        <button class="toss-buttons tossSelect" id="bat">BAT</button>
+        <button class="toss-buttons tossSelect" id="bowl">BOWL</button>
+    </div>
+    <p id="startMatch">START MATCH</p>
+        <p id="tossResult"></p>
+    </div>
+    <div class="main-container" id="main-containerShow">
+<p class="format-head">SIMPLE MATCH</p>
+<div class="score-block" id="scoreflexreverse">
+    <div class="score-content" id="user-score-content">
+        <div class="mini-score-block">
+            <p class="user-content" id="user-name">YOU</p>
+            <p class="user-mini-score" id="userMini">0</p>
+        </div>
+        <div class="score-section">
+            <p class="user-content" id="user-score">0</p>
+            <p class="user-content" id="user-slash">/</p>
+            <p class="user-content" id="user-wicket">0</p>
+        </div>
+    </div>
+    <div id="user-yet">
+        <p class="user-content" id="user-yet-bat">Yet to BAT</p>
+    </div>
+    <div class="score-content" id="comp-score-content">
+    <div class="mini-comp-score-block">
+    <p class="comp-content" id="comp-name">COMP</p>
+    <p class="comp-mini-score" id="compMini">0</p>
+    </div>
+        <div class="score-section">
+            <p class="comp-content" id="comp-score">0</p>
+            <p class="comp-content" id="comp-slash">/</p>
+            <p class="comp-content" id="comp-wicket">0</p>
+        </div>
+    </div>
+
+        <div id="comp-yet">
+            <p class="comp-content" id="comp-yet-bat">Yet to BAT</p>
+        </div>
+</div>
+
+<div class="toss-winner">
+    <p class="toss-head">Toss : </p>
+    <p id="tosswinner"></p>
+</div>
+
+<div id="hat-trick">
+    <p id="on-hat-trick"> ON A HATTRICK </p>
+    <p id="hattrick">HAT TRICK</p>
+</div>
+
+<div id="target-block">
+    <p id="target">Target : </p>
+    <p id="target-score"> 0</p>
+</div>
+
+<p id="requiredruns"></p>
+<div class="options-block" id="optionShow">
+    <button class="options-button scoreOptions" id="one">1</button>
+    <button class="options-button scoreOptions" id="two">2</button>
+    <button class="options-button scoreOptions" id="three">3</button>
+    <button class="options-button scoreOptions" id="four">4</button>
+    <button class="options-button scoreOptions" id="six">6</button>
+</div>
+<div class="options-block" id="optionShowCpu">
+    <button class="options-button scoreOptionsCpu" id="one">1</button>
+    <button class="options-button scoreOptionsCpu" id="two">2</button>
+    <button class="options-button scoreOptionsCpu" id="three">3</button>
+    <button class="options-button scoreOptionsCpu" id="four">4</button>
+    <button class="options-button scoreOptionsCpu" id="six">6</button>
+</div>
+<p id="matchResult"></p>
+<button class="innings" id="innings-over">INNINGS OVER</button>
+<button class="innings" id="innings-show">INNINGS OVER</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
