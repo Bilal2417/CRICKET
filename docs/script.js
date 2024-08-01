@@ -13,6 +13,13 @@ let userName;
 let compFullName;
 
 let hatTrick = 0;
+
+
+let overNumber = 0;
+let overBall = 0;
+
+let overNumberComp = 0;
+let overBallComp = 0;
 // let userNameFull = prompt("Enter your name: ")
 // let userUpper = userNameFull.toUpperCase()
 // let userTrim = userUpper.substring(0,15)
@@ -27,8 +34,14 @@ let hatTrick = 0;
     let firstTarget = 0;
     const score = document.querySelectorAll(".scoreOptions");
     
-    const funWicket = document.querySelectorAll('.wicketbuttons')
+    const funWicket = document.querySelectorAll('.wicketsChoice')
 let totalWickets;
+
+    const funOvers = document.querySelectorAll('.overChoice')
+let totalOvers;
+let totalBalls;
+
+
 
 const selectTeam = document.querySelectorAll(".teams")
 
@@ -76,6 +89,28 @@ const userScoring = (userChoice) => {
     else if(userChoice == "six"){
         userScore = 6;
     }
+
+    overBall++;
+    
+    if(overBall > 5){
+        overBall = 0;
+        overNumber++;
+        document.getElementById('ballnumber').textContent = overBall;
+        document.getElementById('overnumber').textContent = overNumber;
+    }
+    else{
+        document.getElementById('ballnumber').textContent = overBall;
+    }
+
+if(overNumber == totalOvers){
+    // document.getElementById("user-slash").style.display = "none"
+    // document.getElementById("user-wicket").style.display = "none"
+    document.getElementById("optionShow").style.display = "none"
+    document.getElementById("innings-over").style.display = "block"
+    document.getElementById("target-block").style.display = 'flex'
+}
+
+
     userTotalScore += userScore;
     firstTarget = 1 + userTotalScore;
 
@@ -97,7 +132,7 @@ const userScoring = (userChoice) => {
     document.getElementById("user-score").textContent = userTotalScore;
     document.getElementById("target-score").textContent = firstTarget;
     console.log(userTotalScore)
-    return element
+    return element;
 }
 
 
@@ -139,6 +174,27 @@ const userWicketSetup = () => {
         document.getElementById("on-hat-trick").style.display = "none"
         document.getElementById("hattrick").style.display = "none"
     }
+
+    overBall++;
+    
+    if(overBall > 5){
+        overBall = 0;
+        overNumber++;
+        document.getElementById('ballnumber').textContent = overBall;
+        document.getElementById('overnumber').textContent = overNumber;
+    }
+    else{
+        document.getElementById('ballnumber').textContent = overBall;
+    }
+
+    if(overNumber == totalOvers){
+        // document.getElementById("user-slash").style.display = "none"
+        // document.getElementById("user-wicket").style.display = "none"
+        document.getElementById("optionShow").style.display = "none"
+        document.getElementById("innings-over").style.display = "block"
+        document.getElementById("target-block").style.display = 'flex'
+    }
+
 }
 
 const userScoringSecond =(userChoice) => {
@@ -165,19 +221,29 @@ const userScoringSecond =(userChoice) => {
 
     document.getElementById("userMini").style.color = "rgb(37,184,37)"
     document.getElementById("userMini").textContent = userMiniScore;
+
     setTimeout(function elementShow(){
         element = document.getElementById("userMini")
        element.classList.remove("user-mini-score-show")
    },850)
+
+
 
         hatTrick = 0;
     document.getElementById("hat-trick").style.display = "none"
     document.getElementById("on-hat-trick").style.display = "none"
     document.getElementById("hattrick").style.display = "none"
     
+    /************************************************ */
+    /*************RUNS   REQUIRED************* */
+    /************************************************ */
     document.getElementById("user-score").textContent = userTotalScore;
-    document.getElementById("requiredruns").textContent =  userName +" "+" need " +((compTotalScore - userTotalScore) +1 ) +" " + "runs to win"
 
+    totalBalls--;
+
+    document.getElementById("requiredruns").textContent =  userName + " " + " need " +((compTotalScore - userTotalScore) +1 ) + " "  +"runs in" +" " + totalBalls + " " + "balls" + " " + "to win";
+
+    /********************************************* */
     if(userTotalScore >=  firstTarget){
         document.getElementById("requiredruns").style.display = "none"
                 document.getElementById("optionShow").style.display = "none"
@@ -195,7 +261,65 @@ const userScoringSecond =(userChoice) => {
                 document.getElementById("matchResult").textContent = matchResult;
             }
             console.log(userTotalScore)
+
+/******************************************** */
+/*****************OVERS******************* */
+/******************************************** */
+
+   overBall++;
+    
+   if(overBall > 5){
+       overBall = 0;
+       overNumber++;
+       document.getElementById('ballnumber').textContent = overBall;
+       document.getElementById('overnumber').textContent = overNumber;
+   }
+   else{
+       document.getElementById('ballnumber').textContent = overBall;
+   }
+
+if(overNumber == totalOvers){
+    if(userTotalScore < compTotalScore){
+
+    if((compTotalScore - userTotalScore) == 1){
+        matchResult = compFullName + " "+ " WON BY " + (compTotalScore - userTotalScore) + " Run";
+    }
+    else {
+        matchResult = compFullName + " "+ "WON BY " + (compTotalScore - userTotalScore) + " Runs";
+    }
+
 }
+
+else if (userTotalScore > compTotalScore){
+
+    document.getElementById("requiredruns").style.display = "none"
+    // document.getElementById("optionShow").style.display = "none"
+    // document.getElementById("matchResult").style.display = "block"
+
+    if((totalWickets-userWicket) ==1){
+        matchResult = userName + " " +" WON BY " + (totalWickets-userWicket) + " Wicket"
+    }
+    else {
+    matchResult =  userName + " " +" WON BY " + (totalWickets-userWicket) + " Wickets"
+    }
+    // document.getElementById("matchResult").textContent = matchResult;
+}
+
+else if(userTotalScore == (firstTarget - 1)){
+    matchResult = "MATCH DRAWN"
+    // document.getElementById("matchResult").textContent = matchResult;
+}
+console.log(userTotalScore)
+document.getElementById("matchResult").textContent = matchResult;
+// document.getElementById("user-slash").style.display = "none"
+// document.getElementById("user-wicket").style.display = "none"
+document.getElementById("optionShow").style.display = "none"
+document.getElementById("matchResult").style.display = "block"
+        }
+
+}
+
+// }
 
 const userWicketSetupSecond =() => {
     userWicket++;
@@ -242,6 +366,69 @@ const userWicketSetupSecond =() => {
         document.getElementById("on-hat-trick").style.display = "none"
         document.getElementById("hattrick").style.display = "none"
     }
+
+        /***********************************************/
+    /*************RUNS   REQUIRED************* */
+    /************************************************ */
+
+
+    totalBalls--;
+
+    document.getElementById("requiredruns").textContent =  userName + " " + " need " +((compTotalScore - userTotalScore) +1 ) + " " +"runs in" +" " + totalBalls + " " + "balls" + " " + "to win";
+
+    /********************************************* */
+
+    overBall++;
+    
+    if(overBall > 5){
+        overBall = 0;
+        overNumber++;
+        document.getElementById('ballnumber').textContent = overBall;
+        document.getElementById('overnumber').textContent = overNumber;
+    }
+    else{
+        document.getElementById('ballnumber').textContent = overBall;
+    }
+
+if(overNumber == totalOvers){
+    if(userTotalScore < compTotalScore){
+
+    if((compTotalScore - userTotalScore) == 1){
+        matchResult = compFullName + " "+ " WON BY " + (compTotalScore - userTotalScore) + " Run";
+    }
+    else {
+        matchResult = compFullName + " "+ "WON BY " + (compTotalScore - userTotalScore) + " Runs";
+    }
+
+}
+
+else if (userTotalScore > compTotalScore){
+
+    document.getElementById("requiredruns").style.display = "none"
+    // document.getElementById("optionShow").style.display = "none"
+    // document.getElementById("matchResult").style.display = "block"
+
+    if((totalWickets-userWicket) ==1){
+        matchResult = userName + " " +" WON BY " + (totalWickets-userWicket) + " Wicket"
+    }
+    else {
+    matchResult =  userName + " " +" WON BY " + (totalWickets-userWicket) + " Wickets"
+    }
+    // document.getElementById("matchResult").textContent = matchResult;
+}
+
+else if(userTotalScore == (firstTarget - 1)){
+    matchResult = "MATCH DRAWN"
+    // document.getElementById("matchResult").textContent = matchResult;
+}
+console.log(userTotalScore)
+document.getElementById("matchResult").textContent = matchResult;
+// document.getElementById("user-slash").style.display = "none"
+// document.getElementById("user-wicket").style.display = "none"
+document.getElementById("optionShow").style.display = "none"
+document.getElementById("matchResult").style.display = "block"
+    }
+
 }
 
 
@@ -291,7 +478,7 @@ score.forEach((scoreOptions) => {
 
 let inningShow = document.getElementById("innings-over")
 inningShow.addEventListener('click', () => {
-    document.getElementById("comp-score-content").style.display = 'block';
+    document.getElementById("comp-score-content").style.display = 'flex';
     document.getElementById("optionShowCpu").style.display = 'flex';
     document.getElementById("innings-over").style.display = 'none';
     document.getElementById("comp-yet").style.display = 'none';
@@ -307,7 +494,7 @@ inningShow.addEventListener('click', () => {
         
         let inningShowUser = document.getElementById("innings-show")
         inningShowUser.addEventListener('click', () => {
-            document.getElementById("user-score-content").style.display = 'block';
+            document.getElementById("user-score-content").style.display = 'flex';
             document.getElementById("optionShow").style.display = 'flex';
             document.getElementById("optionShowCpu").style.display = 'none';
             document.getElementById("innings-show").style.display = 'none';
@@ -363,14 +550,22 @@ const compScoring = (compChoiceCpu) => {
        element.classList.remove("comp-mini-score-show")
    },850)
 
+
+
    hatTrick = 0;
    document.getElementById("hat-trick").style.display = "none"
    document.getElementById("on-hat-trick").style.display = "none"
    document.getElementById("hattrick").style.display = "none"
 
+    /************************************************ */
+    /*************RUNS   REQUIRED************* */
+    /************************************************ */
+totalBalls--;
 
-    document.getElementById("requiredruns").textContent = compFullName + " " + " need " +((userTotalScore - compTotalScore) +1 ) +" " + "runs to win"
+    document.getElementById("requiredruns").textContent = compFullName + " " + " need " + " " +((userTotalScore - compTotalScore) +1 ) + " " + "runs in" +" "+ totalBalls + " " + "balls" +" " + "to win";
+    
 
+    /************************************************ */
 
     if(compTotalScore >= firstTarget){
                 document.getElementById("requiredruns").style.display = "none"
@@ -384,11 +579,61 @@ const compScoring = (compChoiceCpu) => {
                 }
                 document.getElementById("matchResult").textContent = matchResult;
             }
+
             else if(compTotalScore == (firstTarget - 1)){
                 matchResult = "MATCH DRAWN"
                 document.getElementById("matchResult").textContent = matchResult;
             }
             console.log(compTotalScore)
+
+
+            overBallComp++;
+    
+            if(overBallComp > 5){
+                overBallComp = 0;
+                overNumberComp++;
+                document.getElementById('ballnumberComp').textContent = overBallComp;
+                document.getElementById('overnumberComp').textContent = overNumberComp;
+            }
+            else{
+                document.getElementById('ballnumberComp').textContent = overBallComp;
+            }
+         
+            /*****OVERS********* */
+         if(overNumberComp == totalOvers){
+
+            if(compTotalScore >= firstTarget){
+                document.getElementById("requiredruns").style.display = "none"
+                // document.getElementById("optionShowCpu").style.display = "none"
+                // document.getElementById("matchResult").style.display = "block"
+                if((totalWickets-compWicket) ==1){
+                    matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wicket"
+                }
+                else {
+                matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wickets"
+                }
+                // document.getElementById("matchResult").textContent = matchResult;
+            }
+
+            else if(compTotalScore == (firstTarget - 1)){
+                matchResult = "MATCH DRAWN"
+                // document.getElementById("matchResult").textContent = matchResult;
+            }
+else if(compTotalScore < userTotalScore){
+             if((userTotalScore - compTotalScore) == 1){
+                 matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Run";
+             }
+             else {
+                 matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Runs";
+             }
+     }
+             document.getElementById("matchResult").textContent = matchResult;
+             // document.getElementById("comp-slash").style.display = "none"
+             // document.getElementById("comp-wicket").style.display = "none"
+             document.getElementById("optionShowCpu").style.display = "none"
+             document.getElementById("matchResult").style.display = "block"
+         }
+         
         }
 
 const compWicketSetup = () => {
@@ -436,6 +681,44 @@ const compWicketSetup = () => {
         document.getElementById("on-hat-trick").style.display = "none"
         document.getElementById("hattrick").style.display = "none"
     }
+
+        /************************************************ */
+    /*************RUNS   REQUIRED************* */
+    /************************************************ */
+totalBalls--;
+
+document.getElementById("requiredruns").textContent = compFullName + " " + " need " +((userTotalScore - compTotalScore) +1 ) + " " + "runs in" +" "+ totalBalls + " " + "balls" +" " + "to win";
+
+
+/************************************************ */
+
+    overBallComp++;
+    
+    if(overBallComp > 5){
+        overBallComp = 0;
+        overNumberComp++;
+        document.getElementById('ballnumberComp').textContent = overBallComp;
+        document.getElementById('overnumberComp').textContent = overNumberComp;
+    }
+    else{
+        document.getElementById('ballnumberComp').textContent = overBallComp;
+    }
+
+    if(overNumberComp == totalOvers){
+        if((userTotalScore - compTotalScore) == 1){
+            matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Run";
+        }
+        else {
+            matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Runs";
+        }
+        
+        document.getElementById("matchResult").textContent = matchResult;
+        // document.getElementById("comp-slash").style.display = "none"
+        // document.getElementById("comp-wicket").style.display = "none"
+        document.getElementById("optionShowCpu").style.display = "none"
+        document.getElementById("matchResult").style.display = "block"
+    }
+
 }
 
 const compScoringFirst =(compChoiceCpu) => {
@@ -471,6 +754,28 @@ setTimeout(function elementShow(){
     element = document.getElementById("compMini")
    element.classList.remove("comp-mini-score-show")
 },850)
+
+
+overBallComp++;
+    
+if(overBallComp > 5){
+    overBallComp = 0;
+    overNumberComp++;
+    document.getElementById('ballnumberComp').textContent = overBallComp;
+    document.getElementById('overnumberComp').textContent = overNumberComp;
+}
+else{
+    document.getElementById('ballnumberComp').textContent = overBallComp;
+}
+
+if(overNumberComp == totalOvers){
+    // document.getElementById("comp-slash").style.display = "none"
+    // document.getElementById("comp-wicket").style.display = "none"
+    document.getElementById("optionShowCpu").style.display = "none"
+    document.getElementById("innings-show").style.display = "block"
+        document.getElementById("target-block").style.display = 'flex'
+}
+
 
 hatTrick = 0;
 document.getElementById("hat-trick").style.display = "none"
@@ -522,6 +827,27 @@ else{
     document.getElementById("on-hat-trick").style.display = "none"
     document.getElementById("hattrick").style.display = "none"
 }
+
+overBallComp++;
+    
+if(overBallComp > 5){
+    overBallComp = 0;
+    overNumberComp++;
+    document.getElementById('ballnumberComp').textContent = overBallComp;
+    document.getElementById('overnumberComp').textContent = overNumberComp;
+}
+else{
+    document.getElementById('ballnumberComp').textContent = overBallComp;
+}
+
+if(overNumberComp == totalOvers){
+    // document.getElementById("comp-slash").style.display = "none"
+    // document.getElementById("comp-wicket").style.display = "none"
+    document.getElementById("optionShowCpu").style.display = "none"
+    document.getElementById("innings-show").style.display = "block"
+        document.getElementById("target-block").style.display = 'flex'
+}
+
 
 }
 
@@ -718,9 +1044,10 @@ console.log(totalWickets)
 }
 
 
-funWicket.forEach((wicketbuttons) => {
-    wicketbuttons.addEventListener("click", () => {
-         totalWickets = wicketbuttons.getAttribute("id")
+funWicket.forEach((wicketsChoice) => {
+    wicketsChoice.addEventListener("click", () => {
+         totalWickets = wicketsChoice.getAttribute("id")
+
          if(totalWickets == "threeWickets"){
             totalWickets = 3;
          }
@@ -730,15 +1057,54 @@ funWicket.forEach((wicketbuttons) => {
          else if(totalWickets == "tenWickets"){
             totalWickets = 10;
          }
+
        console.log(totalWickets)
-       if(tossDisplayer == 1){
-           document.getElementById("toss-choice").style.display = "flex"
-       }
-       else{
-           document.getElementById("startMatch").style.display = "block"
-       }
-       document.getElementById("tossResult").style.display = "block"
+
+    //    if(tossDisplayer == 1){
+    //        document.getElementById("toss-choice").style.display = "flex"
+    //    }
+    //    else{
+    //        document.getElementById("startMatch").style.display = "block"
+    //    }
+
+    //    document.getElementById("tossResult").style.display = "block"
        document.getElementById('wickets-content').style.display = 'none'
+       document.getElementById('overs-content').style.display = 'flex'
+       document.getElementById("formatWicket").textContent = "  " + totalWickets +" "+ "WICKETS"
     //    playGameTotalWickets(totalWickets);
     })
 })
+
+
+funOvers.forEach((overChoice) =>{
+    overChoice.addEventListener("click",() =>{
+        totalOvers = overChoice.getAttribute("id")
+
+        if(totalOvers == "three"){
+            totalOvers = 3;
+            totalBalls = 18;
+        }
+        else if(totalOvers == "five"){
+            totalOvers = 5;
+            totalBalls = 30;
+        }
+        else if(totalOvers == "ten"){
+            totalOvers = 10;
+            totalBalls = 60;
+        }
+
+        console.log(totalOvers)
+
+        if(tossDisplayer == 1){
+            document.getElementById("toss-choice").style.display = "flex"
+        }
+        else{
+            document.getElementById("startMatch").style.display = "block"
+        }
+ 
+        document.getElementById("tossResult").style.display = "block"
+               document.getElementById('overs-content').style.display = 'none'
+               document.getElementById("formatOver").textContent = "  " + totalOvers +" " + "OVERS"
+    })
+})
+

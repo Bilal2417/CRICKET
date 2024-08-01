@@ -6,7 +6,7 @@
 
     <title>Document</title>
 
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -43,55 +43,118 @@
         <img class="team-buttons teams small-teams" id="USA" src="videos/usa-img.png" alt="">
         <img class="team-buttons teams" id="WEST-INDIES" src="videos/wi-img.png" alt=""> -->
     </div>
+
     <div class="toss-block" id="tossBlock">
         <div id="toss-content">
         <button class="toss-buttons tossChoice" id="heads">HEADS</button>
         <button class="toss-buttons tossChoice" id="tails">TAILS</button>
     </div>
+
         <div id="wickets-content">
         <button class="wicketbuttons wicketsChoice" id="threeWickets">3 WICKETS</button>
         <button class="wicketbuttons wicketsChoice" id="fiveWickets">5 WICKETS</button>
         <button class="wicketbuttons wicketsChoice" id="tenWickets">10 WICKETS</button>
     </div>
+
+    <div id="overs-content">
+        <button class="wicketbuttons overChoice" id="three">3 OVERS</button>
+        <button class="wicketbuttons overChoice" id="five">5 OVERS</button>
+        <button class="wicketbuttons overChoice" id="ten">10 OVERS</button>
+    </div>
+
         <div id="toss-choice">
         <button class="toss-buttons tossSelect" id="bat">BAT</button>
         <button class="toss-buttons tossSelect" id="bowl">BOWL</button>
     </div>
+
     <p id="startMatch">START MATCH</p>
         <p id="tossResult"></p>
     </div>
+
+<!--**************************************-->
+<!--**********MAIN CONTAINER ********** -->
+<!--**************************************-->
+
     <div class="main-container" id="main-containerShow">
 <p class="format-head">SIMPLE MATCH</p>
+
+<div class="format-block">
+
+    <div class="total-block">
+        <p class="total-format">TOTAL OVERS: </p>
+        <p id="formatOver"> 0</p>
+    </div>
+
+    <div class="total-block">
+        <p class="total-format">TOTAL WICKETS: </p>
+        <p id="formatWicket"> 0</p>
+    </div>
+
+</div>
 <div class="score-block" id="scoreflexreverse">
+
     <div class="score-content" id="user-score-content">
+
         <div class="mini-score-block">
             <p class="user-content" id="user-name">YOU</p>
             <p class="user-mini-score" id="userMini">0</p>
         </div>
+
         <div class="score-section">
             <p class="user-content" id="user-score">0</p>
             <p class="user-content" id="user-slash">/</p>
             <p class="user-content" id="user-wicket">0</p>
         </div>
+
+        <div class="over-section">
+
+            <div class="over-block">
+            <p id="overnumber">0</p>
+            <p id="overdot">.</p>
+            <p id="ballnumber">0</p>
+        </div>
+
+            <p id="overs">overs</p>
+
+        </div>
+
     </div>
+
     <div id="user-yet">
         <p class="user-content" id="user-yet-bat">Yet to BAT</p>
     </div>
+
     <div class="score-content" id="comp-score-content">
+
     <div class="mini-comp-score-block">
     <p class="comp-content" id="comp-name">COMP</p>
     <p class="comp-mini-score" id="compMini">0</p>
     </div>
+
         <div class="score-section">
             <p class="comp-content" id="comp-score">0</p>
             <p class="comp-content" id="comp-slash">/</p>
             <p class="comp-content" id="comp-wicket">0</p>
         </div>
+
+        <div class="over-section">
+
+            <div class="over-block">
+            <p id="overnumberComp">0</p>
+            <p id="overdot">.</p>
+            <p id="ballnumberComp">0</p>
+        </div>
+
+            <p id="overs">overs</p>
+
+        </div>
+
     </div>
 
         <div id="comp-yet">
             <p class="comp-content" id="comp-yet-bat">Yet to BAT</p>
         </div>
+
 </div>
 
 <div class="toss-winner">

@@ -36,11 +36,13 @@ header{
     display: none;
 }
 #toss-content,
-#wickets-content{
+#wickets-content,
+#overs-content{
     display: flex;
     gap: 10px;
 }
-#wickets-content{
+#wickets-content,
+#overs-content{
     display: none;
 }
 #toss-choice{
@@ -226,6 +228,21 @@ header{
     font-size: 22px;
     font-weight: 600;
 }
+.format-block,
+.total-block{
+    display: flex;
+    font-size: 14px;
+}
+.format-block{
+    align-items: center;
+    justify-content: space-evenly;
+}
+.total-block{
+    gap: 5px;
+}
+.total-format{
+    font-weight: 600;
+}
 .user-content,
 .comp-content{
     font-size: 18px;
@@ -285,6 +302,18 @@ header{
     justify-content: center;
     gap: 2px;
 }
+.over-section,
+.over-block{
+    display: flex;
+}
+.over-section{
+    gap: 6px;
+    margin-top: 5px;
+    justify-content: center;
+}
+#overs{
+    text-transform: uppercase;
+}
 #comp-score-content,
 #user-yet{
     display: none;
@@ -324,6 +353,7 @@ header{
 .toss-winner{
     display: flex;
     justify-content: center;
+    align-items: center;
    gap: 5px;
 }
 .toss-head,
@@ -331,6 +361,12 @@ header{
 #tosswinnerchoice{
     font-weight: 600;
 }
+/* #tossStatement{
+        font-size: 13px;
+}
+#tosswinnerchoice{
+    font-size: 14px;
+} */
 #hat-trick{
     display: flex;
     justify-content: center;
