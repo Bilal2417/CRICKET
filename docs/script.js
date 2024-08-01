@@ -298,6 +298,11 @@ inningShow.addEventListener('click', () => {
     document.getElementById("userMini").textContent =''
 
             document.getElementById("requiredruns").style.display = "block"
+
+            hatTrick = 0;
+            document.getElementById("hat-trick").style.display = "none"
+            document.getElementById("on-hat-trick").style.display = "none"
+            document.getElementById("hattrick").style.display = "none"
         })
         
         let inningShowUser = document.getElementById("innings-show")
@@ -310,6 +315,11 @@ inningShow.addEventListener('click', () => {
             document.getElementById("compMini").textContent = '';
 
             document.getElementById("requiredruns").style.display = "block"
+
+            hatTrick = 0;
+            document.getElementById("hat-trick").style.display = "none"
+            document.getElementById("on-hat-trick").style.display = "none"
+            document.getElementById("hattrick").style.display = "none"
 })
 
 
