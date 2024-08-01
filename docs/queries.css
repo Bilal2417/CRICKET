@@ -42,7 +42,8 @@
     .team-selection{
         grid-template-columns: repeat(2,1fr);
     }
-    #wickets-content{
+    #wickets-content,
+    #overs-content{
         flex-direction: column;
     }
     .toss-winner {
