@@ -60,10 +60,17 @@
         width: 55px;
         height: 55px;
     }
+    .format-block {
+        align-items: flex-start;
+        /* justify-content: space-evenly; */
+        flex-direction: column;
+        gap: 5px;
+    }
 }
 @media(max-width:325px){
     .main-container {
         width: 300px;
+        gap: 15px;
     }
     #user-name, #comp-name {
         font-size: 17px;
