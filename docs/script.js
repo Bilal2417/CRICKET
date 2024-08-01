@@ -595,8 +595,9 @@ const chooseInning = (userChoiceInning) => {
     }
     // displayTossWinner.style.fontWeight = "bold"
     // displayTossWinnerChoice.style.fontWeight = "bold"
-    tossStatement = displayTossWinner +" " + "won the toss and chose to" +" " + displayTossWinnerChoice;
-    document.getElementById('tosswinner').textContent = tossStatement
+    tossStatement = displayTossWinner +" " ;
+    document.getElementById('tosswinner').textContent = tossStatement;
+    document.getElementById('tosswinnerchoice').textContent = displayTossWinnerChoice;
 }
 
 
@@ -622,7 +623,7 @@ const playGameToss = (userChoiceToss) =>{
         document.getElementById("toss-content").style.display = "none"
         document.getElementById("wickets-content").style.display = "flex"
         // document.getElementById("toss-choice").style.display = "flex"
-        return userChoiceToss,correctChoiceToss
+        return userChoiceToss,correctChoiceToss;
     }
     else{
         tossDisplayer = 2;
@@ -661,8 +662,10 @@ const playGameToss = (userChoiceToss) =>{
                 document.getElementById("main-containerShow").style.display = "flex"
             })
         }
-        tossStatement = displayTossWinner +" " + "won the toss and chose to" +" " + displayTossWinnerChoice;
-        document.getElementById('tosswinner').textContent = tossStatement
+        // displayTossWinner.style.fontWeight = "bold"
+        tossStatement = displayTossWinner +" " ;
+        document.getElementById('tosswinner').textContent = tossStatement;
+        document.getElementById('tosswinnerchoice').textContent = displayTossWinnerChoice;
         document.getElementById("toss-content").style.display = "none"
         // document.getElementById("tossResult").style.display = "block"
     }

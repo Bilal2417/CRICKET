@@ -326,7 +326,9 @@ header{
     justify-content: center;
    gap: 5px;
 }
-.toss-head{
+.toss-head,
+#tosswinner,
+#tosswinnerchoice{
     font-weight: 600;
 }
 #hat-trick{
