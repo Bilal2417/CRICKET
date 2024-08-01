@@ -349,6 +349,7 @@ const userWicketSetupSecond =() => {
         document.getElementById("user-wicket").style.display = "none"
         document.getElementById("optionShow").style.display = "none"
         document.getElementById("matchResult").style.display = "block"
+         document.getElementById("requiredruns").style.display = "none"
     }
 
     hatTrick++;
@@ -404,7 +405,7 @@ if(overNumber == totalOvers){
 
 else if (userTotalScore > compTotalScore){
 
-    document.getElementById("requiredruns").style.display = "none"
+    // document.getElementById("requiredruns").style.display = "none"
     // document.getElementById("optionShow").style.display = "none"
     // document.getElementById("matchResult").style.display = "block"
 
@@ -427,6 +428,7 @@ document.getElementById("matchResult").textContent = matchResult;
 // document.getElementById("user-wicket").style.display = "none"
 document.getElementById("optionShow").style.display = "none"
 document.getElementById("matchResult").style.display = "block"
+ document.getElementById("requiredruns").style.display = "none"
     }
 
 }
@@ -571,9 +573,11 @@ totalBalls--;
                 document.getElementById("requiredruns").style.display = "none"
                 document.getElementById("optionShowCpu").style.display = "none"
                 document.getElementById("matchResult").style.display = "block"
+
                 if((totalWickets-compWicket) ==1){
                     matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wicket"
                 }
+
                 else {
                 matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wickets"
                 }
@@ -664,6 +668,7 @@ const compWicketSetup = () => {
         document.getElementById("comp-wicket").style.display = "none"
         document.getElementById("optionShowCpu").style.display = "none"
         document.getElementById("matchResult").style.display = "block"
+       document.getElementById("requiredruns").style.display = "none"
     }
     
     hatTrick++;
