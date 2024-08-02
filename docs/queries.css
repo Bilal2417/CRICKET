@@ -1,4 +1,19 @@
 @media(max-width : 430px){
+    .adding-flex {
+        width: 90vw;
+    }
+    .new-block {
+        font-size: 20px;
+    }
+    .update-statement {
+        font-size: 14px;
+    }
+    .flex-decoration {
+        padding: 0 10px;
+    }    
+
+
+
     .team-buttons {
         width: 120px;
         font-size: 12px;
@@ -36,6 +51,15 @@
 }
 }
 @media(max-width:400px){
+    .flex-decoration {
+        padding: 16px 10px 0;
+    }
+    .adding-flex {
+        top: 150px;
+        min-height: 65vh;
+    }
+    
+    
     .main-container {
         width: 340px;
     }
@@ -65,17 +89,35 @@
         /* justify-content: space-evenly; */
         flex-direction: column;
         gap: 5px;
+        margin-left: 35px;
     }
 }
-@media(max-width:325px){
+@media(max-width:330px){
+    .flex-decoration {
+        padding: 16px 0px 0 10px;
+    }
+    .new-block {
+        font-size: 18px;
+    }
+    .update-statement {
+        font-size: 12px;
+    }
     .main-container {
         width: 300px;
         gap: 12px;
+    }
+    #partnership-block {
+        margin-left: 35px;
     }
     #user-name, #comp-name {
         font-size: 17px;
     }
     .user-content, .comp-content {
         font-size: 17px;
+    }
+    #tosswinner,
+    #tossStatement,
+    #tosswinnerchoice{
+        font-size: 12px;
     }
 }

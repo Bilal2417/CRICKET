@@ -2,6 +2,10 @@
     padding: 0;
     margin: 0;
 }
+p{
+    padding: 0;
+    margin: 0;
+}
 body{
     font-family: "Rubik";
     display: flex;
@@ -267,6 +271,28 @@ header{
     background-color: #ca1d1d;
     border-bottom: 5px solid #b03333;
     border-right: 2px solid #b03333;
+}
+.adding-flex{
+    position: absolute;
+    top: 100px;
+    min-width: 40vw;
+    min-height: 60vh;
+}
+.flex-decoration{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 40px;
+}
+.update-statement{
+    font-size: 18px;
+}
+.new-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+    padding: 12px 0;
 }
 .main-container{
     margin-top: 20px;
