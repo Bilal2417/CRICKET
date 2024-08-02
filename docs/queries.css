@@ -70,7 +70,7 @@
 @media(max-width:325px){
     .main-container {
         width: 300px;
-        gap: 15px;
+        gap: 12px;
     }
     #user-name, #comp-name {
         font-size: 17px;
