@@ -10,7 +10,9 @@ let displayTossWinner;
 let displayTossWinnerChoice;
 let tossDisplayer;
 let userName;
+let userTeamName;
 let compFullName;
+let compTeamName;
 
 let hatTrick = 0;
 
@@ -20,6 +22,9 @@ let overBall = 0;
 
 let overNumberComp = 0;
 let overBallComp = 0;
+
+let userPartnership = 0;
+let compPartnership = 0;
 // let userNameFull = prompt("Enter your name: ")
 // let userUpper = userNameFull.toUpperCase()
 // let userTrim = userUpper.substring(0,15)
@@ -53,6 +58,20 @@ selectTeam.forEach((teams) => {
         document.getElementById("selectteam").style.display = "none"
         document.getElementById("tossBlock").style.display = "flex"
         document.getElementById("user-name").textContent = userName;
+        if(userName == "NEW ZEALAND" || userName == "SRI LANKA"){
+            userTeamName = userName[0] + userName[4]
+        }
+        else if(userName == "SOUTH AFRICA"){
+            userTeamName = userName[0] + userName[6]
+        }
+        else if(userName == "WEST INDIES"){
+            userTeamName = userName[0] + userName[5]
+        }
+        else{
+            userTeamName = userName[0] + userName[1] + userName[2];
+        }
+        document.getElementById("userteamName").textContent = userTeamName
+        console.log(userTeamName)
         genCompName(userName)
     })
 })
@@ -62,6 +81,20 @@ const genCompName = (userName) => {
     var randNameChoose = Math.floor(Math.random()*11)
     compFullName = compName[randNameChoose]
     console.log("Comp team : ",compFullName)
+    if(compFullName == "NEW ZEALAND" || compFullName == "SRI LANKA"){
+        compTeamName = compFullName[0] + compFullName[4]
+    }
+    else if(compFullName == "SOUTH AFRICA"){
+        compTeamName = compFullName[0] + compFullName[6]
+    }
+    else if(compFullName == "WEST INDIES"){
+        compTeamName = compFullName[0] + compFullName[5]
+    }
+    else{
+        compTeamName = compFullName[0] + compFullName[1] + compFullName[2];
+    }
+    document.getElementById("compteamName").textContent = compTeamName;
+    console.log(compTeamName)
     document.getElementById("comp-name").textContent = compFullName;
     if(userName == compFullName){
         again()
@@ -89,7 +122,9 @@ const userScoring = (userChoice) => {
     else if(userChoice == "six"){
         userScore = 6;
     }
-
+    userPartnership +=userScore;
+    document.getElementById("PartnershipRuns").textContent = userPartnership + " " + "RUNS"
+    
     overBall++;
     
     if(overBall > 5){
@@ -174,8 +209,10 @@ const userWicketSetup = () => {
         document.getElementById("on-hat-trick").style.display = "none"
         document.getElementById("hattrick").style.display = "none"
     }
-
-    overBall++;
+userPartnership = 0;
+document.getElementById("PartnershipRuns").textContent = userPartnership + " " + "RUNS"
+ 
+overBall++;
     
     if(overBall > 5){
         overBall = 0;
@@ -213,6 +250,9 @@ const userScoringSecond =(userChoice) => {
     else if(userChoice == "six"){
         userScore = 6;
     }
+    userPartnership +=userScore;
+    document.getElementById("PartnershipRuns").textContent = userPartnership + " " + "RUNS";
+
     userTotalScore += userScore;
     
     userMiniScore = "+" + userScore;
@@ -368,6 +408,10 @@ const userWicketSetupSecond =() => {
         document.getElementById("hattrick").style.display = "none"
     }
 
+    userPartnership = 0;
+document.getElementById("PartnershipRuns").textContent = userPartnership + " " + "RUNS"
+ 
+
         /***********************************************/
     /*************RUNS   REQUIRED************* */
     /************************************************ */
@@ -480,6 +524,8 @@ score.forEach((scoreOptions) => {
 
 let inningShow = document.getElementById("innings-over")
 inningShow.addEventListener('click', () => {
+    document.getElementById("blockuser").style.display = 'none';
+    document.getElementById("blockcomp").style.display = 'flex';
     document.getElementById("comp-score-content").style.display = 'flex';
     document.getElementById("optionShowCpu").style.display = 'flex';
     document.getElementById("innings-over").style.display = 'none';
@@ -496,6 +542,8 @@ inningShow.addEventListener('click', () => {
         
         let inningShowUser = document.getElementById("innings-show")
         inningShowUser.addEventListener('click', () => {
+            document.getElementById("blockuser").style.display = 'flex';
+            document.getElementById("blockcomp").style.display = 'none';
             document.getElementById("user-score-content").style.display = 'flex';
             document.getElementById("optionShow").style.display = 'flex';
             document.getElementById("optionShowCpu").style.display = 'none';
@@ -538,7 +586,10 @@ const compScoring = (compChoiceCpu) => {
         compScoreCpu = 6;
     }
     compTotalScore += compScoreCpu;
-    
+
+    compPartnership += compScoreCpu;
+    document.getElementById("PartnershipRunsComp").textContent = compPartnership + " " + "RUNS"
+
     document.getElementById("comp-score").textContent = compTotalScore;
     compMiniScore = "+" + compScoreCpu;
 
@@ -687,6 +738,8 @@ const compWicketSetup = () => {
         document.getElementById("hattrick").style.display = "none"
     }
 
+    compPartnership = 0;
+    document.getElementById("PartnershipRunsComp").textContent = compPartnership + " " + "RUNS";
         /************************************************ */
     /*************RUNS   REQUIRED************* */
     /************************************************ */
@@ -760,6 +813,8 @@ setTimeout(function elementShow(){
    element.classList.remove("comp-mini-score-show")
 },850)
 
+compPartnership += compScore;
+document.getElementById("PartnershipRunsComp").textContent = compPartnership + " " + "RUNS";
 
 overBallComp++;
     
@@ -816,6 +871,9 @@ const compWicketSetupFirst = () => {
         document.getElementById("innings-show").style.display = "block"
             document.getElementById("target-block").style.display = 'flex'
 }
+
+compPartnership = 0;
+document.getElementById("PartnershipRunsComp").textContent = compPartnership + " " + "RUNS";
 
 hatTrick++;
 
@@ -923,6 +981,8 @@ const chooseInning = (userChoiceInning) => {
         let startMatch =  document.getElementById("startMatch");
         document.getElementById("startMatch").style.display = "block"
         startMatch.addEventListener('click', () => {
+             document.getElementById("blockuser").style.display = "none"
+                document.getElementById("blockcomp").style.display = "flex"
             document.getElementById("tossBlock").style.display = "none"
             document.getElementById("main-containerShow").style.display = "flex"
             document.getElementById("optionShowCpu").style.display = "flex"
@@ -979,6 +1039,8 @@ const playGameToss = (userChoiceToss) =>{
             // document.getElementById("startMatch").style.display = "block"
             document.getElementById("wickets-content").style.display = "flex"
             startMatch.addEventListener('click', () => {
+                document.getElementById("blockuser").style.display = "none"
+                document.getElementById("blockcomp").style.display = "flex"
                 document.getElementById("tossBlock").style.display = "none"
                 document.getElementById("main-containerShow").style.display = "flex"
                 document.getElementById("optionShowCpu").style.display = "flex"

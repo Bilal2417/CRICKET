@@ -71,6 +71,7 @@ header{
 .team-buttons{
     width: 175px;
 }
+
 /* .teams{
     width: 165px;
     height: 165px;
@@ -96,12 +97,20 @@ header{
 .australia:hover{
     background-color: #e5b948;
 }
+.australia:active{
+    border-bottom: 4px solid #ae8c35;
+    border-right: 3px solid #ae8c35;
+}
 .afghanistan{
     background-color: #3695CB;
     border-color: #235f81;
 }
 .afghanistan:hover{
     background-color: #4eb5f0;
+}
+.afghanistan:active{
+    border-bottom: 4px solid #235f81;
+    border-right: 3px solid #235f81;
 }
 .bangladesh{
     background-color: #016b4f;
@@ -110,12 +119,20 @@ header{
 .bangladesh:hover{
     background-color: #159c79;
 }
+.bangladesh:active{
+    border-bottom: 4px solid #22463d;
+    border-right: 3px solid #22463d;
+}
 .england{
     background-color: #1514d4;
     border-color: #17175e;
 }
 .england:hover{
     background-color: #5150f1;
+}
+.england:active{
+    border-bottom: 4px solid #17175e;
+    border-right: 3px solid #17175e;
 }
 .india{
     background-color: #9AC5E5;
@@ -124,12 +141,20 @@ header{
 .india:hover{
     background-color: #6eb3e5;
 }
+.india:active{
+    border-bottom: 4px solid #416076;
+    border-right: 3px solid #416076;
+}
 .newzealand{
     background-color: #2D2829;
     border-color: #000000;
 }
 .newzealand:hover{
     background-color: #433c3e;
+}
+.newzealand:active{
+    border-bottom: 4px solid #000000;
+    border-right: 3px solid #000000;
 }
 .pakistan{
     background-color: #07381b;
@@ -138,12 +163,20 @@ header{
 .pakistan:hover{
     background-color: #175e34;
 }
+.pakistan:active{
+    border-bottom: 4px solid #041a0d;
+    border-right: 3px solid #041a0d;
+}
 .safrica{
     background-color: #1d5e24;
     border-color: #153c19;
 }
 .safrica:hover{
     background-color: #307637;
+}
+.safrica:active{
+    border-bottom: 4px solid #153c19;
+    border-right: 3px solid #153c19;
 }
 .srilanka{
     background-color: #315098;
@@ -152,6 +185,10 @@ header{
 .srilanka:hover{
     background-color: #4b6fc4;
 }
+.srilanka:active{
+    border-bottom: 4px solid #203566;
+    border-right: 3px solid #203566;
+}
 .usa{
     background-color: #bf0001;
     border-color: #710d0e;
@@ -159,12 +196,20 @@ header{
 .usa:hover{
     background-color: #ca3d3e;
 }
+.usa:active{
+    border-bottom: 4px solid #710d0e;
+    border-right: 3px solid #710d0e;
+}
 .windies{
     background-color: #781349;
     border-color: #4c0d2f;
 }
 .windies:hover{
     background-color: #84315d;
+}
+.windies:active{
+    border-bottom: 4px solid #4c0d2f;
+    border-right: 3px solid #4c0d2f;
 }
 #tossResult{
     background-color: black;
@@ -216,7 +261,7 @@ header{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
     width: 450px;
     display: none;
 }
@@ -227,6 +272,18 @@ header{
     padding: 4px 0;
     font-size: 22px;
     font-weight: 600;
+}
+.team-name{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 35px;
+}
+.team-match,
+.teamversus{
+    font-weight: 600;
+    font-size: 14px;
 }
 .format-block,
 .total-block{
@@ -321,6 +378,30 @@ header{
 #comp-yet-bat,
 #user-yet-bat{
     font-weight: 600;
+}
+
+#partnership-block{
+    margin-left: 60px;
+}
+#partnership-block,
+#blockuser,
+#blockcomp{
+    display: flex;
+    gap: 5px;
+}
+#blockuser,
+#blockcomp{
+    padding: 10px 18px;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 500;
+}
+#blockuser{
+    background-color: yellowgreen;
+}
+#blockcomp{
+    background-color: red;
+    display: none;
 }
 .options-block{
     display: flex;
