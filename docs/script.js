@@ -77,7 +77,7 @@ selectTeam.forEach((teams) => {
 })
 var element;
 const genCompName = (userName) => {
-    let compName = ["AUSTRALIA" , "ENGLAND" , "NEW ZEALAND" , "SOUTH AFRICA" , "SRI LANKA" , "INDIA" , "PAKISTAN" , "USA" , "BANGLADESH" , "WEST INDIES" , "AFGHANISTAN"]
+    let compName = ["AUSTRALIA" , "ENGLAND" , "NEW ZEALAND" , "SOUTH AFRICA" , "SRI LANKA" , "INDIA" , "PAKISTAN" , "USA" ,"NETHERLANDS", "BANGLADESH" , "WEST INDIES" , "AFGHANISTAN"]
     var randNameChoose = Math.floor(Math.random()*11)
     compFullName = compName[randNameChoose]
     console.log("Comp team : ",compFullName)

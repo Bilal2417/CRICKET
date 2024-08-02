@@ -156,6 +156,17 @@ header{
     border-bottom: 4px solid #000000;
     border-right: 3px solid #000000;
 }
+.netherlands{
+    background-color: #ef6c00;
+    border-color: #b15d18;
+}
+.netherlands:hover{
+    background-color: #e97a1e;
+}
+.netherlands:active{
+    border-bottom: 4px solid #b15d18;
+    border-right: 3px solid #b15d18;
+}
 .pakistan{
     background-color: #07381b;
     border-color: #041a0d;
