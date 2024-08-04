@@ -24,14 +24,15 @@
 </head>
 <body>
     <header>
-        <h2 class="main-head">CRICKET</h2>
+        <h2 class="main-head">CRICKET REBORN</h2>
     </header>
 
     <div class="alert alert-success alert-dismissible fade show adding-flex" role="alert">
 <div class="flex-decoration">
     <div class="new-block">
         <strong>Whats New!</strong>
-        <p class="update-statement">You should check in on some of those fields below.</p> 
+        <!-- <strong class="update-size">MAJOR UPDATE</strong> -->
+        <strong class="update-size">UPDATE VERSION 0.6</strong>
     </div>
         <p class="update-statement">ADDED <strong>PARTNERSHIP</strong>  FEATURE</p>
         <p class="update-statement">ADDED NEW TEAM <strong> NETHERLANDS</strong></p>
@@ -41,6 +42,13 @@
         <p class="update-statement">ADDED <strong> 3 OVERS </strong>IN GAME</p>
         <p class="update-statement">ADDED <strong> 5 OVERS </strong>IN GAME</p>
         <p class="update-statement">ADDED <strong> 10 OVERS</strong> IN GAME</p>
+        <div class="new-block">
+        <strong class="update-size">MAJOR UPDATE</strong>
+        <strong class="update-size">UPDATE VERSION 0.7</strong>
+        </div>
+        <p class="update-statement">ADDED <strong>PLAY AGAIN</strong> BUTTON IN GAME</p>
+        <p class="update-statement">ADDED <strong>PLAYER PROFILE</strong> IN GAME</p>
+        <p class="update-statement">MINOR <strong>BUG</strong> FIXES</p>
     </div>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -48,7 +56,38 @@
 
       </div>
 
+
+      <div class="profile-block">
+
+        <div class="profile-img">
+            <p id="profile-img-text">B</p>
+        </div>
+
+        <div class="profile-text-block">
+            <div class="profile-text">
+                <p class="profile-experience">Experience</p>
+                <div class="exp-cal">
+                <p id="profile-exp-left">00</p>
+                <p id="profile-exp-slash">/</p>
+                <p id="profile-exp-right">00</p>
+            </div>
+            </div>
+            <div class="profile-bar">
+                <p id="bar-length"></p>
+            </div>
+        </div>
+
+        <div class="level-block">
+            <p class="level">Level</p>
+            <p id="level-number">1</p>
+        </div>
+    </div>
+
+
+  <!-- <input id="hello" type="text" name="">
+  <button onclick="turnOn()">Submit</button> -->
     <div class="team-selection" id="selectteam">
+        
 <button class="team-buttons australia teams">AUSTRALIA</button>
 <button class="team-buttons afghanistan teams">AFGHANISTAN</button>
 <button class="team-buttons bangladesh teams">BANGLADESH</button>
@@ -245,6 +284,7 @@
 <p id="matchResult"></p>
 <button class="innings" id="innings-over">INNINGS OVER</button>
 <button class="innings" id="innings-show">INNINGS OVER</button>
+<button class="play-again" id="play-again">PLAY AGAIN</button>
     </div>
     <script src="script.js"></script>
 </body>

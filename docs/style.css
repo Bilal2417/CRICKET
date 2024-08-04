@@ -24,6 +24,58 @@ header{
     word-spacing: 10px;
     letter-spacing: 1px;
 }
+/*****************************************************/
+/*****************************************************/
+.profile-block {
+    display: flex;
+    gap: 5px;
+    background-color: #f2f9ff;
+    width: 365px;
+    border-radius: 36px;
+    padding: 10px 20px;
+    margin-top: 15px;
+}
+.profile-img{
+    background-color: aquamarine;
+    width: 50px;
+    height: 50px;
+    /* text-align: center; */
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-text-block{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.profile-text,
+.exp-cal,
+.level-block{
+    display: flex;
+    gap: 5px;
+}
+.profile-bar{
+    background-color: #ccecfc;
+    width: 200px;
+    height: 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#bar-length{
+    background-color: #37b2eb;
+    width: 10px;
+    height: 18px;
+    border-radius: 12px;
+}
+
+
+/*****************************************************/
+/*****************************************************/
+
 .team-selection{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -36,9 +88,13 @@ header{
     flex-direction: column;
     gap: 20px;
 }
-#tossBlock{
+/* #toss-content,
+#wickets-content,
+#overs-content,
+#toss-choice,
+#startMatch{
     display: none;
-}
+} */
 #toss-content,
 #wickets-content,
 #overs-content{
@@ -235,7 +291,7 @@ header{
     border-radius: 10px;
     display: none;
     text-align: center;
-    width: 294px;
+    width: 100%;
     max-width: 310px;
 }
 .toss-buttons:hover,
@@ -258,7 +314,7 @@ header{
     border-radius: 10px;
     display: none;
     text-align: center;
-    width: 294px;
+    width: 100%;
     max-width: 310px;
     border-bottom: 7px solid #b03333;
     border-right: 4px solid #b03333;
@@ -272,6 +328,18 @@ header{
     border-bottom: 5px solid #b03333;
     border-right: 2px solid #b03333;
 }
+
+
+#toss-content,
+#wickets-content,
+#overs-content,
+#toss-choice,
+#startMatch{
+    display: none;
+}
+
+
+
 .adding-flex{
     position: absolute;
     top: 100px;
@@ -294,12 +362,17 @@ header{
     font-size: 22px;
     padding: 12px 0;
 }
+.update-size{
+    font-size: 18px;
+}
 .main-container{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     width: 450px;
+}
+#main-containerShow{
     display: none;
 }
 .format-head{
@@ -432,13 +505,13 @@ header{
     border-radius: 12px;
     color: #fff;
     font-weight: 500;
+    display: none;
 }
 #blockuser{
     background-color: yellowgreen;
 }
 #blockcomp{
     background-color: red;
-    display: none;
 }
 .options-block{
     display: flex;
@@ -551,4 +624,26 @@ display: none;
 }
 #innings-show{
     display: none;
+}
+.play-again{
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    background-color:yellow;
+    box-shadow:10px 10px 0 rgba(0,0,0,.5);
+    width: 50%;
+    padding: 6px 0;
+    border: none;
+    transform: skew(-20deg);
+    align-self: center;
+    /* border-radius: 6px; */
+    display: none;
+}
+.play-again:hover{
+    cursor: pointer;
+    background-color:rgb(209, 209, 6);
+    box-shadow: 0 0 0 0;
+}
+.play-again:active{
+    background-color:rgb(166, 166, 10);
 }
