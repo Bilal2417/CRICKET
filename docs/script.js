@@ -52,18 +52,46 @@ let totalBalls;
 /*********************************************** */
 /*********************************************** */
 let expNumber = 0;
-let totalExp = 0;
+// let totalExp = 0;
 let expRequired = 200;
-let totalExpRequired = expRequired * 2;
+let savedTotalExp = 0;
 let levelUp = 1;
+
+let totalExp = +prompt("enter totalExp: ")
+// let expNumber = +prompt("enter expNumber: ")
+// let levelUp = +prompt("enter levelUp: ")
+// let expRequired = +prompt("enter expRequired: ")
 document.getElementById("profile-exp-right").textContent = expRequired;
 /*********************************************** */
 /*********************************************** */
 
 
+const expCalc = () =>{
+    savedTotalExp += totalExp;
+    setInterval(function exp(){
+        if(expNumber < totalExp){
+            expNumber += 1;
+            document.getElementById("profile-exp-left").textContent = expNumber;
+            document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
+            
+            if(expNumber >= expRequired){
+                while(expNumber > 0){
+                    expNumber--;
+                    document.getElementById("profile-exp-left").textContent = expNumber;
+                    document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
+                }
+                totalExp = totalExp - expRequired;
+                console.log(totalExp,"hhhh");
+                expRequired += 200;
+                levelUp += 1;
+                document.getElementById("level-number").textContent = levelUp;
+                document.getElementById("profile-exp-right").textContent = expRequired;
 
+            }
+        }
+      },60)
 
-
+}
 
 
 
@@ -72,6 +100,7 @@ document.getElementById("profile-exp-right").textContent = expRequired;
 const selectTeam = document.querySelectorAll(".teams")
 
 selectTeam.forEach((teams) => {
+    expCalc();
     teams.addEventListener('click', () => {
         userName = event.target.textContent
         // userName = teams.getAttribute("id")
@@ -96,6 +125,8 @@ selectTeam.forEach((teams) => {
         genCompName(userName)
     })
 })
+
+
 var element;
 const genCompName = (userName) => {
     let compName = ["AUSTRALIA" , "ENGLAND" , "NEW ZEALAND" , "SOUTH AFRICA" , "SRI LANKA" , "INDIA" , "PAKISTAN" , "USA" ,"NETHERLANDS", "BANGLADESH" , "WEST INDIES" , "AFGHANISTAN"]
@@ -316,35 +347,8 @@ const userScoringSecond =(userChoice) => {
           }
 
         totalExp += 25;
-            setInterval(function exp(){
-                if(expNumber < totalExp){
-                    expNumber += 1;
-                    document.getElementById("profile-exp-left").textContent = expNumber;
-                    document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                    
-                    if(expNumber >= expRequired){
-                        while(expNumber > 0){
-                            expNumber--;
-                            document.getElementById("profile-exp-left").textContent = expNumber;
-                            if(expRequired == 400 || expRequired == 800){
+        expCalc();
 
-                                document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                                console.log(expRequired)
-                            }else{
-                                document.getElementById("bar-length").style.width = expNumber + "px";
-                            }
-                        }
-                        totalExp = totalExp - expRequired;
-                        console.log(totalExp,"hhhh");
-                        expRequired += 200;
-                        levelUp += 1;
-                        document.getElementById("level-number").textContent = levelUp;
-                        document.getElementById("profile-exp-right").textContent = expRequired;
-
-                    }
-                   }
-
-               },60)
         
         if((totalWickets-userWicket) ==1){
             matchResult = userName + " " +" WON BY " + (totalWickets-userWicket) + " Wicket"
@@ -417,35 +421,7 @@ else if (userTotalScore > compTotalScore){
     /********************************************************** */
 
     totalExp += 25;
-    setInterval(function exp(){
-        if(expNumber < totalExp){
-            expNumber += 1;
-            document.getElementById("profile-exp-left").textContent = expNumber;
-            document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-            
-            if(expNumber >= expRequired){
-                while(expNumber > 0){
-                    expNumber--;
-                    document.getElementById("profile-exp-left").textContent = expNumber;
-                    // if(expRequired == 400 || expRequired == 800){
-
-                    //     document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                    //     console.log(expRequired)
-                    // }else{
-                    // }
-                    document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                }
-                totalExp = totalExp - expRequired;
-                console.log(totalExp,"hhhh");
-                expRequired += 200;
-                levelUp += 1;
-                document.getElementById("level-number").textContent = levelUp;
-                document.getElementById("profile-exp-right").textContent = expRequired;
-
-            }
-           }
-
-       },60)
+    expCalc();
     /********************************************************** */
     /********************************************************** */
      document.getElementById("play-again").style.display = "block"
@@ -460,35 +436,7 @@ else if(userTotalScore == (firstTarget - 1)){
          /********************************************** */
          /********************************************** */
          totalExp += 5;
-         setInterval(function exp(){
-             if(expNumber < totalExp){
-                 expNumber += 1;
-                 document.getElementById("profile-exp-left").textContent = expNumber;
-                 document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                 
-                 if(expNumber >= expRequired){
-                     while(expNumber > 0){
-                         expNumber--;
-                         document.getElementById("profile-exp-left").textContent = expNumber;
-                                // if(expRequired == 400 || expRequired == 800){
-       
-                                //     document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                                //     console.log(expRequired)
-                                // }else{
-                                // }
-                                document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                     }
-                     totalExp = totalExp - expRequired;
-                     console.log(totalExp,"hhhh");
-                     expRequired += 200;
-                     levelUp += 1;
-                     document.getElementById("level-number").textContent = levelUp;
-                     document.getElementById("profile-exp-right").textContent = expRequired;
-
-                 }
-                }
-
-            },60)
+         expCalc();
             /************************************************** */
             /************************************************** */
             /************************************************** */
@@ -608,35 +556,7 @@ else if (userTotalScore > compTotalScore){
     }
     // document.getElementById("matchResult").textContent = matchResult;
     totalExp += 25;
-    setInterval(function exp(){
-        if(expNumber < totalExp){
-            expNumber += 1;
-            document.getElementById("profile-exp-left").textContent = expNumber;
-            document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-            
-            if(expNumber >= expRequired){
-                while(expNumber > 0){
-                    expNumber--;
-                    document.getElementById("profile-exp-left").textContent = expNumber;
-                    // if(expRequired == 400 || expRequired == 800){
-
-                    //     document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                    //     console.log(expRequired)
-                    // }else{
-                    // }
-                    document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                }
-                totalExp = totalExp - expRequired;
-                console.log(totalExp,"hhhh");
-                expRequired += 200;
-                levelUp += 1;
-                document.getElementById("level-number").textContent = levelUp;
-                document.getElementById("profile-exp-right").textContent = expRequired;
-
-            }
-           }
-
-       },60)
+    expCalc();
 }
 
 else if(userTotalScore == (firstTarget - 1)){
@@ -647,35 +567,7 @@ else if(userTotalScore == (firstTarget - 1)){
     /******************************************* */
     /******************************************* */
     totalExp += 5;
-    setInterval(function exp(){
-        if(expNumber < totalExp){
-            expNumber += 1;
-            document.getElementById("profile-exp-left").textContent = expNumber;
-            document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-            
-            if(expNumber >= expRequired){
-                while(expNumber > 0){
-                    expNumber--;
-                    document.getElementById("profile-exp-left").textContent = expNumber;
-                    // if(expRequired == 400 || expRequired == 800){
-
-                    //     document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                    //     console.log(expRequired)
-                    // }else{
-                    // }
-                    document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                }
-                totalExp = totalExp - expRequired;
-                console.log(totalExp,"hhhh");
-                expRequired += 200;
-                levelUp += 1;
-                document.getElementById("level-number").textContent = levelUp;
-                document.getElementById("profile-exp-right").textContent = expRequired;
-
-            }
-           }
-
-       },60)
+    expCalc();
        /************************************************** */
        /************************************************** */
        /************************************************** */
@@ -906,35 +798,7 @@ if(overNumberComp != totalOvers){
                      /****************************************** */
                      /****************************************** */
                      totalExp += 5;
-                     setInterval(function exp(){
-                         if(expNumber < totalExp){
-                             expNumber += 1;
-                             document.getElementById("profile-exp-left").textContent = expNumber;
-                             document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                             
-                             if(expNumber >= expRequired){
-                                 while(expNumber > 0){
-                                     expNumber--;
-                                     document.getElementById("profile-exp-left").textContent = expNumber;
-                                     // if(expRequired == 400 || expRequired == 800){
-            
-                                     //     document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                                     //     console.log(expRequired)
-                                     // }else{
-                                     // }
-                                     document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                                 }
-                                 totalExp = totalExp - expRequired;
-                                 console.log(totalExp,"hhhh");
-                                 expRequired += 200;
-                                 levelUp += 1;
-                                 document.getElementById("level-number").textContent = levelUp;
-                                 document.getElementById("profile-exp-right").textContent = expRequired;
-            
-                             }
-                            }
-            
-                        },60)
+                     expCalc();
                         /************************************************** */
                         /************************************************** */
                         /************************************************** */
@@ -957,35 +821,7 @@ if(overNumberComp != totalOvers){
                 /********************************************* */
 
                 totalExp += 25;
-                setInterval(function exp(){
-                    if(expNumber < totalExp){
-                        expNumber += 1;
-                        document.getElementById("profile-exp-left").textContent = expNumber;
-                        document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                        
-                        if(expNumber >= expRequired){
-                            while(expNumber > 0){
-                                expNumber--;
-                                document.getElementById("profile-exp-left").textContent = expNumber;
-                                // if(expRequired == 400 || expRequired == 800){
-       
-                                //     document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                                //     console.log(expRequired)
-                                // }else{
-                                // }
-                                document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                            }
-                            totalExp = totalExp - expRequired;
-                            console.log(totalExp,"hhhh");
-                            expRequired += 200;
-                            levelUp += 1;
-                            document.getElementById("level-number").textContent = levelUp;
-                            document.getElementById("profile-exp-right").textContent = expRequired;
-                            
-                        }
-                    }
-                    
-                },60)
+                expCalc();
             }
             
             document.getElementById("matchResult").textContent = matchResult;
@@ -1032,35 +868,7 @@ const compWicketSetup = () => {
                 /********************************************* */
 
                 totalExp += 25;
-                setInterval(function exp(){
-                    if(expNumber < totalExp){
-                        expNumber += 1;
-                        document.getElementById("profile-exp-left").textContent = expNumber;
-                        document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                        
-                        if(expNumber >= expRequired){
-                            while(expNumber > 0){
-                                expNumber--;
-                                document.getElementById("profile-exp-left").textContent = expNumber;
-                                // if(expRequired == 400 || expRequired == 800){
-       
-                                //     document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                                //     console.log(expRequired)
-                                // }else{
-                                // }
-                                document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                            }
-                            totalExp = totalExp - expRequired;
-                            console.log(totalExp,"hhhh");
-                            expRequired += 200;
-                            levelUp += 1;
-                            document.getElementById("level-number").textContent = levelUp;
-                            document.getElementById("profile-exp-right").textContent = expRequired;
-       
-                        }
-                       }
-       
-                   },60)
+                expCalc();
 
                 /********************************************* */
                 /********************************************* */
@@ -1136,35 +944,8 @@ if(compWicket != totalWickets){
                 /********************************************* */
 
                 totalExp += 25;
-                setInterval(function exp(){
-                    if(expNumber < totalExp){
-                        expNumber += 1;
-                        document.getElementById("profile-exp-left").textContent = expNumber;
-                        document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                        
-                        if(expNumber >= expRequired){
-                            while(expNumber > 0){
-                                expNumber--;
-                                document.getElementById("profile-exp-left").textContent = expNumber;
-                                // if(expRequired == 400 || expRequired == 800){
-       
-                                //     document.getElementById("bar-length").style.width = (expNumber/2) + "px";
-                                //     console.log(expRequired)
-                                // }else{
-                                // }
-                                document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                            }
-                            totalExp = totalExp - expRequired;
-                            console.log(totalExp,"hhhh");
-                            expRequired += 200;
-                            levelUp += 1;
-                            document.getElementById("level-number").textContent = levelUp;
-                            document.getElementById("profile-exp-right").textContent = expRequired;
-       
-                        }
-                       }
-       
-                   },60)
+                expCalc();
+
                    /********************************************* */
                    /********************************************* */
                    /********************************************* */
@@ -1352,6 +1133,39 @@ scoreCpu.forEach((scoreOptionsCpu) => {
         playGameCpu(userChoiceCpu)
     })
 })
+
+/******************************************************** */
+/******************************************************** */
+/******************************************************** */
+/******************************************************** */
+/******************************************************** */
+
+
+// const expCalc = () =>{
+//     setInterval(function exp(){
+//         if(expNumber < totalExp){
+//             expNumber += 1;
+//             document.getElementById("profile-exp-left").textContent = expNumber;
+//             document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
+            
+//             if(expNumber >= expRequired){
+//                 while(expNumber > 0){
+//                     expNumber--;
+//                     document.getElementById("profile-exp-left").textContent = expNumber;
+//                     document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
+//                 }
+//                 totalExp = totalExp - expRequired;
+//                 console.log(totalExp,"hhhh");
+//                 expRequired += 200;
+//                 levelUp += 1;
+//                 document.getElementById("level-number").textContent = levelUp;
+//                 document.getElementById("profile-exp-right").textContent = expRequired;
+
+//             }
+//         }
+//       },60)
+
+// }
 
 /******************************************************** */
 /******************************************************** */
