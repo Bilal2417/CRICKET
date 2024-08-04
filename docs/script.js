@@ -52,12 +52,12 @@ let totalBalls;
 /*********************************************** */
 /*********************************************** */
 let expNumber = 0;
-// let totalExp = 0;
+let totalExp = 0;
 let expRequired = 200;
 let savedTotalExp = 0;
 let levelUp = 1;
 
-let totalExp = +prompt("enter totalExp: ")
+// let totalExp = +prompt("enter totalExp: ")
 // let expNumber = +prompt("enter expNumber: ")
 // let levelUp = +prompt("enter levelUp: ")
 // let expRequired = +prompt("enter expRequired: ")
@@ -66,32 +66,33 @@ document.getElementById("profile-exp-right").textContent = expRequired;
 /*********************************************** */
 
 
-const expCalc = () =>{
-    savedTotalExp += totalExp;
-    setInterval(function exp(){
-        if(expNumber < totalExp){
-            expNumber += 1;
-            document.getElementById("profile-exp-left").textContent = expNumber;
-            document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
+// const expCalc = () =>{
+//     // savedTotalExp += totalExp;
+//     // console.log(savedTotalExp,"saved experience")
+//     setInterval(function exp(){
+//         if(expNumber < totalExp){
+//             expNumber += 1;
+//             document.getElementById("profile-exp-left").textContent = expNumber;
+//             document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
             
-            if(expNumber >= expRequired){
-                while(expNumber > 0){
-                    expNumber--;
-                    document.getElementById("profile-exp-left").textContent = expNumber;
-                    document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-                }
-                totalExp = totalExp - expRequired;
-                console.log(totalExp,"hhhh");
-                expRequired += 200;
-                levelUp += 1;
-                document.getElementById("level-number").textContent = levelUp;
-                document.getElementById("profile-exp-right").textContent = expRequired;
+//             if(expNumber >= expRequired){
+//                 while(expNumber > 0){
+//                     expNumber--;
+//                     document.getElementById("profile-exp-left").textContent = expNumber;
+//                     document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
+//                 }
+//                 totalExp = totalExp - expRequired;
+//                 console.log(totalExp,"hhhh");
+//                 expRequired += 200;
+//                 levelUp += 1;
+//                 document.getElementById("level-number").textContent = levelUp;
+//                 document.getElementById("profile-exp-right").textContent = expRequired;
+                
+//             }
+//         }
+//     },80)
 
-            }
-        }
-      },60)
-
-}
+// }
 
 
 
@@ -100,7 +101,7 @@ const expCalc = () =>{
 const selectTeam = document.querySelectorAll(".teams")
 
 selectTeam.forEach((teams) => {
-    expCalc();
+
     teams.addEventListener('click', () => {
         userName = event.target.textContent
         // userName = teams.getAttribute("id")
@@ -157,6 +158,7 @@ function again(){
     genCompName()
 }
 const userScoring = (userChoice) => {
+    expCalc();
     // tossStatement = displayTossWinner + "won the toss and chose to" + displayTossWinnerChoice;
     // document.getElementById('tosswinner').textContent = tossStatement
     if(userChoice == "one"){
@@ -344,9 +346,12 @@ const userScoringSecond =(userChoice) => {
     if(userTotalScore >=  firstTarget && overNumber != totalOvers){
           if((totalWickets - userWicket) >= 5 ){
             totalExp += 10 ;
+            savedTotalExp += 10; 
           }
 
         totalExp += 25;
+        savedTotalExp += 25; 
+        console.log(savedTotalExp,"saved experience")
         expCalc();
 
         
@@ -421,6 +426,8 @@ else if (userTotalScore > compTotalScore){
     /********************************************************** */
 
     totalExp += 25;
+    savedTotalExp += 25; 
+    console.log(savedTotalExp,"saved experience")
     expCalc();
     /********************************************************** */
     /********************************************************** */
@@ -436,6 +443,8 @@ else if(userTotalScore == (firstTarget - 1)){
          /********************************************** */
          /********************************************** */
          totalExp += 5;
+         savedTotalExp += 5; 
+         console.log(savedTotalExp,"saved experience")
          expCalc();
             /************************************************** */
             /************************************************** */
@@ -556,6 +565,8 @@ else if (userTotalScore > compTotalScore){
     }
     // document.getElementById("matchResult").textContent = matchResult;
     totalExp += 25;
+    savedTotalExp += 25; 
+    console.log(savedTotalExp,"saved experience")
     expCalc();
 }
 
@@ -567,6 +578,8 @@ else if(userTotalScore == (firstTarget - 1)){
     /******************************************* */
     /******************************************* */
     totalExp += 5;
+    savedTotalExp += 5; 
+    console.log(savedTotalExp,"saved experience")
     expCalc();
        /************************************************** */
        /************************************************** */
@@ -798,6 +811,9 @@ if(overNumberComp != totalOvers){
                      /****************************************** */
                      /****************************************** */
                      totalExp += 5;
+                     savedTotalExp += 5; 
+                     console.log(savedTotalExp,"saved experience")
+                     
                      expCalc();
                         /************************************************** */
                         /************************************************** */
@@ -815,12 +831,15 @@ if(overNumberComp != totalOvers){
 
              if((userTotalScore - compTotalScore) >= 50 ){
                 totalExp += 10;
+                savedTotalExp += 10; 
              }
                 /********************************************* */
                 /********************************************* */
                 /********************************************* */
 
                 totalExp += 25;
+                savedTotalExp += 25; 
+                console.log(savedTotalExp,"saved experience")
                 expCalc();
             }
             
@@ -863,11 +882,16 @@ const compWicketSetup = () => {
             matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Runs";
         }
          
+        if((userTotalScore - compTotalScore) >= 50 ){
+            totalExp += 10;
+            savedTotalExp += 10; 
+         }
                 /********************************************* */
                 /********************************************* */
                 /********************************************* */
 
                 totalExp += 25;
+                savedTotalExp += 25; 
                 expCalc();
 
                 /********************************************* */
@@ -939,11 +963,17 @@ if(compWicket != totalWickets){
             matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Runs";
         }
          
+
+        if((userTotalScore - compTotalScore) >= 50 ){
+            totalExp += 10;
+            savedTotalExp += 10; 
+         }
                 /********************************************* */
                 /********************************************* */
                 /********************************************* */
 
                 totalExp += 25;
+                savedTotalExp += 25; 
                 expCalc();
 
                    /********************************************* */
@@ -1141,31 +1171,33 @@ scoreCpu.forEach((scoreOptionsCpu) => {
 /******************************************************** */
 
 
-// const expCalc = () =>{
-//     setInterval(function exp(){
-//         if(expNumber < totalExp){
-//             expNumber += 1;
-//             document.getElementById("profile-exp-left").textContent = expNumber;
-//             document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
+const expCalc = () =>{
+    // savedTotalExp += totalExp;
+    // console.log(savedTotalExp,"saved experience")
+    setInterval(function exp(){
+        if(expNumber < totalExp){
+            expNumber += 1;
+            document.getElementById("profile-exp-left").textContent = expNumber;
+            document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
             
-//             if(expNumber >= expRequired){
-//                 while(expNumber > 0){
-//                     expNumber--;
-//                     document.getElementById("profile-exp-left").textContent = expNumber;
-//                     document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-//                 }
-//                 totalExp = totalExp - expRequired;
-//                 console.log(totalExp,"hhhh");
-//                 expRequired += 200;
-//                 levelUp += 1;
-//                 document.getElementById("level-number").textContent = levelUp;
-//                 document.getElementById("profile-exp-right").textContent = expRequired;
+            if(expNumber >= expRequired){
+                while(expNumber > 0){
+                    expNumber--;
+                    document.getElementById("profile-exp-left").textContent = expNumber;
+                    document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
+                }
+                totalExp = totalExp - expRequired;
+                console.log(totalExp,"hhhh");
+                expRequired += 200;
+                levelUp += 1;
+                document.getElementById("level-number").textContent = levelUp;
+                document.getElementById("profile-exp-right").textContent = expRequired;
+                
+            }
+        }
+    },80)
 
-//             }
-//         }
-//       },60)
-
-// }
+}
 
 /******************************************************** */
 /******************************************************** */
