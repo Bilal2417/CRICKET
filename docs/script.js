@@ -99,7 +99,7 @@ selectTeam.forEach((teams) => {
 var element;
 const genCompName = (userName) => {
     let compName = ["AUSTRALIA" , "ENGLAND" , "NEW ZEALAND" , "SOUTH AFRICA" , "SRI LANKA" , "INDIA" , "PAKISTAN" , "USA" ,"NETHERLANDS", "BANGLADESH" , "WEST INDIES" , "AFGHANISTAN"]
-    var randNameChoose = Math.floor(Math.random()*11)
+    var randNameChoose = Math.floor(Math.random()*12)
     compFullName = compName[randNameChoose]
     console.log("Comp team : ",compFullName)
     if(compFullName == "NEW ZEALAND" || compFullName == "SRI LANKA"){
@@ -117,7 +117,7 @@ const genCompName = (userName) => {
     document.getElementById("compteamName").textContent = compTeamName;
     console.log(compTeamName)
     document.getElementById("comp-name").textContent = compFullName;
-    if(userName == compFullName){
+    if(userName === compFullName){
         again()
     }
 }
@@ -305,11 +305,15 @@ const userScoringSecond =(userChoice) => {
     document.getElementById("user-score").textContent = userTotalScore;
 
     totalBalls--;
+    if(overNumber != totalOvers){
     document.getElementById("requiredruns").style.display = "block"
     document.getElementById("requiredruns").textContent =  userName + " " + " need " +((compTotalScore - userTotalScore) +1 ) + " "  +"runs in" +" " + totalBalls + " " + "balls" + " " + "to win";
-
+    }
     /********************************************* */
     if(userTotalScore >=  firstTarget && overNumber != totalOvers){
+          if((totalWickets - userWicket) >= 5 ){
+            totalExp += 10 ;
+          }
 
         totalExp += 25;
             setInterval(function exp(){
@@ -340,7 +344,7 @@ const userScoringSecond =(userChoice) => {
                     }
                    }
 
-               },100)
+               },60)
         
         if((totalWickets-userWicket) ==1){
             matchResult = userName + " " +" WON BY " + (totalWickets-userWicket) + " Wicket"
@@ -441,7 +445,7 @@ else if (userTotalScore > compTotalScore){
             }
            }
 
-       },100)
+       },60)
     /********************************************************** */
     /********************************************************** */
      document.getElementById("play-again").style.display = "block"
@@ -484,7 +488,7 @@ else if(userTotalScore == (firstTarget - 1)){
                  }
                 }
 
-            },100)
+            },60)
             /************************************************** */
             /************************************************** */
             /************************************************** */
@@ -559,8 +563,10 @@ document.getElementById("PartnershipRuns").textContent = userPartnership + " " +
 
 
     totalBalls--;
-    document.getElementById("requiredruns").style.display = "block"
-    document.getElementById("requiredruns").textContent =  userName + " " + " need " +((compTotalScore - userTotalScore) +1 ) + " " +"runs in" +" " + totalBalls + " " + "balls" + " " + "to win";
+    if(userWicket != totalWickets){
+        document.getElementById("requiredruns").style.display = "block"
+        document.getElementById("requiredruns").textContent =  userName + " " + " need " +((compTotalScore - userTotalScore) +1 ) + " " +"runs in" +" " + totalBalls + " " + "balls" + " " + "to win";
+    }
 
     /********************************************* */
 
@@ -630,7 +636,7 @@ else if (userTotalScore > compTotalScore){
             }
            }
 
-       },100)
+       },60)
 }
 
 else if(userTotalScore == (firstTarget - 1)){
@@ -669,7 +675,7 @@ else if(userTotalScore == (firstTarget - 1)){
             }
            }
 
-       },100)
+       },60)
        /************************************************** */
        /************************************************** */
        /************************************************** */
@@ -831,8 +837,10 @@ const compScoring = (compChoiceCpu) => {
     /*************RUNS   REQUIRED************* */
     /************************************************ */
 totalBalls--;
+if(overNumberComp != totalOvers){
     document.getElementById("requiredruns").style.display = "block"
     document.getElementById("requiredruns").textContent = compFullName + " " + " need " + " " +((userTotalScore - compTotalScore) +1 ) + " " + "runs in" +" "+ totalBalls + " " + "balls" +" " + "to win";
+}
     
 
     /************************************************ */
@@ -926,7 +934,7 @@ totalBalls--;
                              }
                             }
             
-                        },100)
+                        },60)
                         /************************************************** */
                         /************************************************** */
                         /************************************************** */
@@ -940,6 +948,10 @@ totalBalls--;
                  matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Runs";
              } 
 
+
+             if((userTotalScore - compTotalScore) >= 50 ){
+                totalExp += 10;
+             }
                 /********************************************* */
                 /********************************************* */
                 /********************************************* */
@@ -973,7 +985,7 @@ totalBalls--;
                         }
                     }
                     
-                },100)
+                },60)
             }
             
             document.getElementById("matchResult").textContent = matchResult;
@@ -1048,7 +1060,7 @@ const compWicketSetup = () => {
                         }
                        }
        
-                   },100)
+                   },60)
 
                 /********************************************* */
                 /********************************************* */
@@ -1092,9 +1104,10 @@ const compWicketSetup = () => {
     /*************RUNS   REQUIRED************* */
     /************************************************ */
 totalBalls--;
+if(compWicket != totalWickets){
     document.getElementById("requiredruns").style.display = "block"
-document.getElementById("requiredruns").textContent = compFullName + " " + " need " +((userTotalScore - compTotalScore) +1 ) + " " + "runs in" +" "+ totalBalls + " " + "balls" +" " + "to win";
-
+    document.getElementById("requiredruns").textContent = compFullName + " " + " need " +((userTotalScore - compTotalScore) +1 ) + " " + "runs in" +" "+ totalBalls + " " + "balls" +" " + "to win";
+}
 
 /************************************************ */
 
@@ -1151,7 +1164,7 @@ document.getElementById("requiredruns").textContent = compFullName + " " + " nee
                         }
                        }
        
-                   },100)
+                   },60)
                    /********************************************* */
                    /********************************************* */
                    /********************************************* */
