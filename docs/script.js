@@ -841,6 +841,7 @@ totalBalls--;
                 document.getElementById("requiredruns").style.display = "none"
                 document.getElementById("optionShowCpu").style.display = "none"
                 document.getElementById("matchResult").style.display = "block"
+                document.getElementById("play-again").style.display = "block"
 
                 if((totalWickets-compWicket) ==1){
                     matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wicket"
@@ -1489,8 +1490,8 @@ const playGameToss = (userChoiceToss) =>{
             // document.getElementById("startMatch").style.display = "block"
             startMatch.addEventListener('click', () => {
 
-                document.getElementById("blockuser").style.display = "none"
-                document.getElementById("blockcomp").style.display = "flex"
+                document.getElementById("blockuser").style.display = "flex"
+                document.getElementById("blockcomp").style.display = "none"
 
                 document.getElementById("startMatch").style.display = "none"
                 document.getElementById("tossBlock").style.display = "none"
@@ -1641,6 +1642,12 @@ PlayAgain.addEventListener("click", () => {
     document.getElementById("requiredruns").style.display = "none"
     document.getElementById("target-block").style.display = "none"
     document.getElementById("matchResult").style.display = "none"
+    
+    document.getElementById("hat-trick").style.display = "none"
+    document.getElementById("on-hat-trick").style.display = "none"
+    document.getElementById("hattrick").style.display = "none"
+
+
     PlayAgain.style.display = "none"
 overBall = 0;
 document.getElementById("ballnumber").textContent = overBall;

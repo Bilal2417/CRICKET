@@ -51,6 +51,9 @@
 }
 }
 @media(max-width:400px){
+    .alert-dismissible {
+        padding-right: 0rem;
+    }
     .flex-decoration {
         padding: 16px 10px 0;
     }
@@ -93,6 +96,13 @@
     }
 }
 @media(max-width:330px){
+    .alert-dismissible {
+        padding-right: 3rem;
+    }
+    .update-size {
+        font-size: 16px;
+    }
+    
     .flex-decoration {
         padding: 16px 0px 0 10px;
     }
@@ -100,7 +110,7 @@
         font-size: 18px;
     }
     .update-statement {
-        font-size: 12px;
+        font-size: 11px;
     }
     .main-container {
         width: 300px;
