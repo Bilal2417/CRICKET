@@ -27,11 +27,11 @@
         font-size: 16px;
     }
     #tossResult{
-        width: 100%;
+        width: 95%;
         font-size: 15px;
     }
     #startMatch{
-        width: 270px;
+        width: 95%;
         font-size: 16px;
     }
     .main-container{
@@ -51,6 +51,9 @@
 }
 }
 @media(max-width:400px){
+    .main-head{
+        font-size: 26px;
+    }
     .alert-dismissible {
         padding-right: 0rem;
     }
@@ -96,6 +99,24 @@
     }
 }
 @media(max-width:330px){
+    .profile-block {
+        display: flex;
+        gap: 5px;
+        background-color: #f2f9ff;
+        width: 310px;
+        border-radius: 36px;
+        padding: 10px 10px;
+        margin-top: 15px;
+        font-size: 11px;
+    }
+    .profile-img {
+        width: 35px;
+        height: 35px;
+    }
+    .profile-text-block {
+        gap: 0px;
+    }
+    
     .alert-dismissible {
         padding-right: 3rem;
     }
