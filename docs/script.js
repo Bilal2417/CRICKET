@@ -880,9 +880,8 @@ if(overNumberComp != totalOvers){
              // document.getElementById("comp-wicket").style.display = "none"
              document.getElementById("optionShowCpu").style.display = "none"
              document.getElementById("matchResult").style.display = "block"
-                             document.getElementById("play-again").style.display = "block"
-         
-         
+              document.getElementById("play-again").style.display = "block"
+             
              }
          
         }
@@ -905,40 +904,6 @@ const compWicketSetup = () => {
        element.classList.remove("comp-mini-score-show")
    },850)
 
-    // if(compWicket == totalWickets && overNumberComp != totalOvers ){
-    //     if((userTotalScore - compTotalScore) == 1){
-    //         matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Run";
-    //     }
-    //     else {
-    //         matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Runs";
-    //     }
-         
-    //     if((userTotalScore - compTotalScore) >= 50 ){
-    //         totalExp += 10;
-    //         savedTotalExp += 10; 
-    //      }
-    //             /********************************************* */
-    //             /********************************************* */
-    //             /********************************************* */
-
-    //             totalExp += 25;
-    //             savedTotalExp += 25; 
-    //             expCalc();
-
-    //             /********************************************* */
-    //             /********************************************* */
-    //             /********************************************* */
-
-
-
-    //     document.getElementById("matchResult").textContent = matchResult;
-    //     document.getElementById("comp-slash").style.display = "none"
-    //     document.getElementById("comp-wicket").style.display = "none"
-    //     document.getElementById("optionShowCpu").style.display = "none"
-    //     document.getElementById("matchResult").style.display = "block"
-    //    document.getElementById("play-again").style.display = "block"
-    //    document.getElementById("requiredruns").style.display = "none"
-    // }
                     /********************************************* */
                 /********************************************* */
                 /********************************************* */
