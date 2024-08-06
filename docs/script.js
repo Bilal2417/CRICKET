@@ -13,10 +13,7 @@ let userName;
 let userTeamName;
 let compFullName;
 let compTeamName;
-// function turnOn(){
-//     let Hello = document.getElementById("hello").value
-//     localStorage.setItem("Name",Hello)
-// }
+
 let hatTrick = 0;
 
 
@@ -66,9 +63,50 @@ document.getElementById("profile-exp-right").textContent = expRequired;
 /*********************************************** */
 
 
+function displayTeam(){
+    document.getElementById("signForm").style.display = "none"
+    let profile = document.querySelector(".profile-block")
+    profile.style.display = "flex"
+    
+    let teams = document.querySelector(".team-selection")
+    teams.style.display = "grid"
+
+    allContent.style.backgroundImage = "none"
+
+    getData();
+}
+ let inputedName;
+function getData(){
+     inputedName = document.getElementById("nameData").value
+    let inputedKey = document.getElementById("keyData").value
+    localStorage.setItem("Name",inputedName)
+    localStorage.setItem("Key",inputedKey)
+  const profileLetter = inputedName[0];
+  document.getElementById("profile-img-text").textContent = profileLetter;
+}
 
 
+function hideShow(){
+    document.getElementById("signShow").style.display = "none"
+    document.getElementById("loginShow").style.display = "block"
+    document.getElementById("dataShow").style.display = "none"
+    document.getElementById("dataHide").style.display = "flex"
+    document.getElementById("statementShow").style.display = "none"
+    document.getElementById("statementHide").style.display = "flex"
+    document.getElementById("formHide").style.display = "flex"
+    document.getElementById("formShow").style.display = "none"
+}
 
+function showHide(){
+    document.getElementById("signShow").style.display = "block"
+    document.getElementById("loginShow").style.display = "none"
+    document.getElementById("dataShow").style.display = "flex"
+    document.getElementById("dataHide").style.display = "none"
+    document.getElementById("statementShow").style.display = "flex"
+    document.getElementById("statementHide").style.display = "none"
+    document.getElementById("formHide").style.display = "none"
+    document.getElementById("formShow").style.display = "flex"
+}
 
 const selectTeam = document.querySelectorAll(".teams")
 

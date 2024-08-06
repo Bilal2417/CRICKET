@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="queries.css">
 </head>
-<body>
+<body id="allContent">
     <header>
         <h2 class="main-head">CRICKET REBORN</h2>
     </header>
@@ -55,6 +55,42 @@
         </button>
 
       </div>
+
+
+<div id="signForm">
+    <p class="sign-head">Cricket Reborn</p>
+    <p class="sign-up" id="signShow">SIGN UP</p>
+    <p class="sign-up" id="loginShow">LOGIN</p>
+    <form id="formShow" action="javascript: displayTeam()">
+        <div class="inputs-block" id="dataShow">
+            <input class="input-data" id="nameData" type="text" placeholder="Username" required minlength="7">
+            <input class="input-data" id="keyData" type="password" placeholder="Password" required minlength="8">
+            <button class="signUp-button">Sign Up</button>
+        </div>
+    </form>
+    <div class="login-statement" id="statementShow">
+        <p>Already have an account?</p>
+        <a class="login-link" onclick="hideShow()">Login</a>
+    </div>
+    
+    
+
+<form id="formHide" action="javascript: displayTeam()">
+    <div class="inputs-block" id="dataHide">
+        <input class="input-data" id="nameDataLogin" type="text" placeholder="Username" required minlength="7">
+        <input class="input-data" id="keyDataLogin" type="password" placeholder="Password" required minlength="8">
+        <button class="signUp-button">LOGIN</button>
+        </div>
+    </form>
+
+    <div class="login-statement" id="statementHide">
+        <p>Don't have an account?</p>
+        <a class="login-link" onclick="showHide()">Sign Up</a>
+    </div>
+</div>
+
+
+
 
 
       <div class="profile-block">

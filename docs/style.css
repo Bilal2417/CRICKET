@@ -10,8 +10,11 @@ body{
     font-family: "Rubik";
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    background-image: url("img/background-image.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
 }
 header{
     color: #fff;
@@ -26,6 +29,105 @@ header{
 }
 /*****************************************************/
 /*****************************************************/
+/*****************************************************/
+
+#signForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 370px;
+    padding: 0px 32px 28px;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    color: #fff;
+    backdrop-filter: blur(8px);
+    margin-top: 100px;
+}
+.sign-head{
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #000;
+    background-color: #fff;
+    padding: 8px 16px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.sign-up{
+    font-size: 24px;
+    font-weight: 600;
+    font-family: cursive;
+}
+.inputs-block{
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+}
+.login-statement{
+    display: flex;
+    gap: 5px;
+}
+.input-data{
+    border-radius: 25px;
+    width: 270px;
+    height: 35px;
+    padding-left: 15px;
+    font-size: 15px;
+    border: 2px solid #fff;
+    color: #fff;
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+}
+.input-data::placeholder{
+    color: #fff;
+}
+.input-data:active,
+.input-data:focus{
+    outline: none;
+    border: 3px solid #fff;
+}
+.signUp-button{
+    border-radius: 25px;
+    width: 100%;
+    height: 35px;
+    font-size: 15px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+.signUp-button:hover{
+    color: #fff;
+    background-color: skyblue;
+    transition: 0.3s all;
+}
+.signUp-button:active,
+.signUp-button:focus{
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #71bad8;
+}
+.login-link{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+.login-link:hover{
+    cursor: pointer;
+    text-decoration:underline;
+    border-bottom: 1px solid #fff;
+}
+#loginShow,
+#formHide,
+#statementHide{
+    display: none;
+}
+/*****************************************************/
+/*****************************************************/
+/*****************************************************/
+/*****************************************************/
+/*****************************************************/
 .profile-block {
     display: flex;
     gap: 5px;
@@ -34,6 +136,9 @@ header{
     border-radius: 36px;
     padding: 10px 20px;
     margin-top: 15px;
+}
+.profile-block{
+    display: none;
 }
 .profile-img{
     background-color: aquamarine;
@@ -81,6 +186,9 @@ header{
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin-top: 100px;
+}
+.team-selection{
+    display: none;
 }
 .toss-block{
     margin-top: 120px;
@@ -345,6 +453,7 @@ header{
     top: 100px;
     min-width: 40vw;
     min-height: 60vh;
+    z-index: 1;
 }
 .flex-decoration{
     display: flex;
