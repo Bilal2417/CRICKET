@@ -66,34 +66,6 @@ document.getElementById("profile-exp-right").textContent = expRequired;
 /*********************************************** */
 
 
-// const expCalc = () =>{
-//     // savedTotalExp += totalExp;
-//     // console.log(savedTotalExp,"saved experience")
-//     setInterval(function exp(){
-//         if(expNumber < totalExp){
-//             expNumber += 1;
-//             document.getElementById("profile-exp-left").textContent = expNumber;
-//             document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-            
-//             if(expNumber >= expRequired){
-//                 while(expNumber > 0){
-//                     expNumber--;
-//                     document.getElementById("profile-exp-left").textContent = expNumber;
-//                     document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
-//                 }
-//                 totalExp = totalExp - expRequired;
-//                 console.log(totalExp,"hhhh");
-//                 expRequired += 200;
-//                 levelUp += 1;
-//                 document.getElementById("level-number").textContent = levelUp;
-//                 document.getElementById("profile-exp-right").textContent = expRequired;
-                
-//             }
-//         }
-//     },80)
-
-// }
-
 
 
 
@@ -158,7 +130,6 @@ function again(){
     genCompName()
 }
 const userScoring = (userChoice) => {
-    expCalc();
     // tossStatement = displayTossWinner + "won the toss and chose to" + displayTossWinnerChoice;
     // document.getElementById('tosswinner').textContent = tossStatement
     if(userChoice == "one"){
@@ -421,6 +392,11 @@ else if (userTotalScore > compTotalScore){
     else {
     matchResult =  userName + " " +" WON BY " + (totalWickets-userWicket) + " Wickets"
     }
+
+    if((totalWickets - userWicket) >= 5 ){
+        totalExp += 10 ;
+        savedTotalExp += 10; 
+      }
     // document.getElementById("matchResult").textContent = matchResult;
     /********************************************************** */
     /********************************************************** */
@@ -458,7 +434,7 @@ document.getElementById("optionShow").style.display = "none"
 document.getElementById("play-again").style.display = "block"
 }
 
-if(userTotalScore >=  firstTarget && overNumber != totalOvers){
+else if(userTotalScore >=  firstTarget && overNumber != totalOvers){
     if((totalWickets - userWicket) >= 5 ){
       totalExp += 10 ;
       savedTotalExp += 10; 
@@ -521,7 +497,7 @@ const userWicketSetupSecond =() => {
         document.getElementById("user-wicket").style.display = "none"
         document.getElementById("optionShow").style.display = "none"
         document.getElementById("matchResult").style.display = "block"
-                        document.getElementById("play-again").style.display = "block"
+          document.getElementById("play-again").style.display = "block"
          document.getElementById("requiredruns").style.display = "none"
     }
 
@@ -582,24 +558,24 @@ if(overNumber == totalOvers){
 
 }
 
-else if (userTotalScore > compTotalScore){
+// else if (userTotalScore > compTotalScore){
 
-    // document.getElementById("requiredruns").style.display = "none"
-    // document.getElementById("optionShow").style.display = "none"
-    // document.getElementById("matchResult").style.display = "block"
+//     // document.getElementById("requiredruns").style.display = "none"
+//     // document.getElementById("optionShow").style.display = "none"
+//     // document.getElementById("matchResult").style.display = "block"
 
-    if((totalWickets-userWicket) ==1){
-        matchResult = userName + " " +" WON BY " + (totalWickets-userWicket) + " Wicket"
-    }
-    else {
-    matchResult =  userName + " " +" WON BY " + (totalWickets-userWicket) + " Wickets"
-    }
-    // document.getElementById("matchResult").textContent = matchResult;
-    totalExp += 25;
-    savedTotalExp += 25; 
-    console.log(savedTotalExp,"saved experience")
-    expCalc();
-}
+//     if((totalWickets-userWicket) ==1){
+//         matchResult = userName + " " +" WON BY " + (totalWickets-userWicket) + " Wicket"
+//     }
+//     else {
+//     matchResult =  userName + " " +" WON BY " + (totalWickets-userWicket) + " Wickets"
+//     }
+//     // document.getElementById("matchResult").textContent = matchResult;
+//     totalExp += 25;
+//     savedTotalExp += 25; 
+//     console.log(savedTotalExp,"saved experience")
+//     expCalc();
+// }
 
 else if(userTotalScore == (firstTarget - 1)){
     matchResult = "MATCH DRAWN"
@@ -622,7 +598,7 @@ document.getElementById("matchResult").textContent = matchResult;
 // document.getElementById("user-wicket").style.display = "none"
 document.getElementById("optionShow").style.display = "none"
 document.getElementById("matchResult").style.display = "block"
-                document.getElementById("play-again").style.display = "block"
+   document.getElementById("play-again").style.display = "block"
  document.getElementById("requiredruns").style.display = "none"
     }
 
@@ -782,19 +758,19 @@ if(overNumberComp != totalOvers){
     /************************************************ */
 
     if(compTotalScore >= firstTarget){
-                document.getElementById("requiredruns").style.display = "none"
-                document.getElementById("optionShowCpu").style.display = "none"
-                document.getElementById("matchResult").style.display = "block"
-                document.getElementById("play-again").style.display = "block"
-
-                if((totalWickets-compWicket) ==1){
-                    matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wicket"
-                }
-
-                else {
-                matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wickets"
-                }
-                document.getElementById("matchResult").textContent = matchResult;
+        
+        if((totalWickets-compWicket) ==1){
+            matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wicket"
+        }
+        
+        else {
+            matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wickets"
+        }
+        document.getElementById("matchResult").textContent = matchResult;
+        document.getElementById("requiredruns").style.display = "none"
+        document.getElementById("optionShowCpu").style.display = "none"
+        document.getElementById("matchResult").style.display = "block"
+        document.getElementById("play-again").style.display = "block"
             }
 
             // else if(compTotalScore == (firstTarget - 1)){
@@ -986,7 +962,7 @@ if(compWicket != totalWickets){
                         document.getElementById("play-again").style.display = "block"
     }
 
-    if(compWicket == totalWickets && overNumberComp != totalOvers ){
+   else  if(compWicket == totalWickets && overNumberComp != totalOvers ){
         if((userTotalScore - compTotalScore) == 1){
             matchResult =  userName + " " +" WON BY " + (userTotalScore - compTotalScore) + " Run";
         }
@@ -1211,6 +1187,7 @@ const expCalc = () =>{
             document.getElementById("profile-exp-left").textContent = expNumber;
             document.getElementById("bar-length").style.width = (expNumber/levelUp) + "px";
             
+        }
             if(expNumber >= expRequired){
                 while(expNumber > 0){
                     expNumber--;
@@ -1225,8 +1202,7 @@ const expCalc = () =>{
                 document.getElementById("profile-exp-right").textContent = expRequired;
                 
             }
-        }
-    },200)
+    },300)
 
 }
 
