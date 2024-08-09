@@ -61,13 +61,17 @@
     <p class="sign-head">Cricket Reborn</p>
     <p class="sign-up" id="signShow">SIGN UP</p>
     <p class="sign-up" id="loginShow">LOGIN</p>
-    <form id="formShow" action="javascript: displayTeam()">
+
+    <form id="formShow" action="javascript: hideShow()" onsubmit="getData()">
         <div class="inputs-block" id="dataShow">
             <input class="input-data" id="nameData" type="text" placeholder="Username" required minlength="7">
             <input class="input-data" id="keyData" type="password" placeholder="Password" required minlength="8">
+            <input class="input-data" id="mailData" type="email" placeholder="example@gmail.com" required>
+            <p id="mailWrong">Email Already Exist!</p>
             <button class="signUp-button">Sign Up</button>
         </div>
     </form>
+    
     <div class="login-statement" id="statementShow">
         <p>Already have an account?</p>
         <a class="login-link" onclick="hideShow()">Login</a>
@@ -75,10 +79,11 @@
     
     
 
-<form id="formHide" action="javascript: displayTeam()">
+<form id="formHide" action="javascript: checkData()">
     <div class="inputs-block" id="dataHide">
-        <input class="input-data" id="nameDataLogin" type="text" placeholder="Username" required minlength="7">
-        <input class="input-data" id="keyDataLogin" type="password" placeholder="Password" required minlength="8">
+        <input class="input-data input-data-login" id="mailDataLogin" type="email" placeholder="example@gmail.com" required>
+        <input class="input-data input-data-login" id="keyDataLogin" type="password" placeholder="Password" required minlength="8">
+        <p id="wrong">Email or Password is wrong</p>
         <button class="signUp-button">LOGIN</button>
         </div>
     </form>
@@ -320,8 +325,10 @@
 <p id="matchResult"></p>
 <button class="innings" id="innings-over">INNINGS OVER</button>
 <button class="innings" id="innings-show">INNINGS OVER</button>
+<button class="button-save-exit" id="saveExit">Save & Exit</button>
 <button class="play-again" id="play-again">PLAY AGAIN</button>
     </div>
+    <div id="saveBlock"></div>
     <script src="script.js"></script>
 </body>
 </html>

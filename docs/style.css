@@ -14,7 +14,9 @@ body{
     background-image: url("img/background-image.webp");
     background-repeat: no-repeat;
     background-position: center;
+    /* background-size: contain; */
     min-height: 100vh;
+    max-height: 100vh;
 }
 header{
     color: #fff;
@@ -42,7 +44,7 @@ header{
     border-radius: 12px;
     color: #fff;
     backdrop-filter: blur(8px);
-    margin-top: 100px;
+    margin-top: 125px;
 }
 .sign-head{
     font-size: 18px;
@@ -81,11 +83,21 @@ header{
 }
 .input-data::placeholder{
     color: #fff;
+    opacity: 0.7;
 }
 .input-data:active,
 .input-data:focus{
     outline: none;
     border: 3px solid #fff;
+}
+#wrong,
+#mailWrong{
+    /* text-align: left; */
+    color: red;
+    padding-left: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    display: none;
 }
 .signUp-button{
     border-radius: 25px;
@@ -734,6 +746,30 @@ display: none;
 #innings-show{
     display: none;
 }
+.button-save-exit {
+    background-color: #007BFF; /* Blue background for prominence */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.button-save-exit:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.button-save-exit:active {
+    background-color: #003d7a; /* Even darker blue when clicked */
+}
+#saveExit{
+  display: none;
+}
 .play-again{
     font-size: 20px;
     font-weight: 700;
@@ -755,4 +791,21 @@ display: none;
 }
 .play-again:active{
     background-color:rgb(166, 166, 10);
+}
+.main-bright{
+    filter: brightness(0.5);
+}
+.saved-message{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 200px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: rgba(128, 128, 128, 0.5);
+    color: #fff;
+    padding: 10px 0;
+    filter: brightness(1);
 }

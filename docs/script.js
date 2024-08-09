@@ -52,8 +52,8 @@ let expNumber = 0;
 let totalExp = 0;
 let expRequired = 200;
 let savedTotalExp = 0;
+let gotTotalExp;
 let levelUp = 1;
-
 // let totalExp = +prompt("enter totalExp: ")
 // let expNumber = +prompt("enter expNumber: ")
 // let levelUp = +prompt("enter levelUp: ")
@@ -72,21 +72,163 @@ function displayTeam(){
     teams.style.display = "grid"
 
     allContent.style.backgroundImage = "none"
+}
 
-    getData();
-}
+
  let inputedName;
+ let inputedKey;
+ let inputedMail;
+ let inputedName2;
+ let inputedKey2;
+ let inputedMail2;
+ let inputedName3;
+ let inputedKey3;
+ let inputedMail3;
+
+ let account;
+let permisson;
+let firstPermisson;
+let firstName;
+let firstMail;
+let firstKey;
+let secondName;
+let secondKey;
+let secondMail;
+
 function getData(){
-     inputedName = document.getElementById("nameData").value
-    let inputedKey = document.getElementById("keyData").value
-    localStorage.setItem("Name",inputedName)
-    localStorage.setItem("Key",inputedKey)
-  const profileLetter = inputedName[0];
-  document.getElementById("profile-img-text").textContent = profileLetter;
+
+        inputedName = document.getElementById("nameData").value
+        inputedKey = document.getElementById("keyData").value
+        inputedMail = document.getElementById("mailData").value
+         if(!firstMail){
+            localStorage.setItem("Name",inputedName)
+            localStorage.setItem("Key",inputedKey)
+            localStorage.setItem("Mail",inputedMail)
+            localStorage.setItem("Account",1)
+        }
+        else if(inputedMail == firstMail || inputedMail == secondMail){
+            checkSame();
+        }
+        else if(!secondMail){
+            localStorage.setItem("Name2",inputedName)
+            localStorage.setItem("Key2",inputedKey)
+            localStorage.setItem("Mail2",inputedMail)
+            localStorage.setItem("Account",2)
+        }
+        
+        if( firstMail == undefined){
+            valueCheck();
+        }
+        else{
+            valueCheckSecond();
+        }
+
+    }
+    valueCheck();
+    valueCheckSecond();
+
+
+
+    function valueCheck(){
+
+
+        if( firstMail == undefined){
+            firstName =  localStorage.getItem("Name")
+            firstKey =  localStorage.getItem("Key")
+            firstMail =  localStorage.getItem("Mail")
+            if(firstName){ 
+                const profileLetter = firstName[0];
+                document.getElementById("profile-img-text").textContent = profileLetter;
+            }
+        }
+
+        if(firstMail){
+            permisson = true;
+        }
+    }
+
+    function  valueCheckSecond(){
+    secondName =  localStorage.getItem("Name2")
+    secondKey =  localStorage.getItem("Key2")
+    secondMail =  localStorage.getItem("Mail2")
+    if(secondName){
+        const profileLetter = secondName[0];
+        document.getElementById("profile-img-text").textContent = profileLetter;
+    }
 }
+
+let getMail;
+let getPass;
+function checkData(){
+    getMail = document.getElementById("mailDataLogin").value
+    getPass = document.getElementById("keyDataLogin").value
+    if(getMail === firstMail ){
+        if(getPass === firstKey){
+            gotTotalExp = localStorage.getItem("ExpGained")
+            if(gotTotalExp){
+                getSavedExp();
+            }
+            account = 1;
+            displayTeam()
+        }
+        else{
+            document.getElementById("mailDataLogin").style.borderColor = "red"
+            document.getElementById("keyDataLogin").style.borderColor = "red"
+            document.getElementById("wrong").style.display = "block"
+        }
+    }
+    else if(getMail === secondMail){
+        
+        if(getPass === secondKey){
+            savedTotalExp = localStorage.getItem("ExpGained-2")
+            displayTeam()
+            if(savedTotalExp){
+                getSavedExp();
+            }
+            account = 2;
+        }
+            else{
+                document.getElementById("mailDataLogin").style.borderColor = "red"
+                document.getElementById("keyDataLogin").style.borderColor = "red"
+                document.getElementById("wrong").style.display = "block"
+            }
+        }
+
+    else{
+        document.getElementById("mailDataLogin").style.borderColor = "red"
+        document.getElementById("keyDataLogin").style.borderColor = "red"
+        document.getElementById("wrong").style.display = "block"
+    }
+}
+
+
+function checkSame(){
+       document.getElementById("mailData").style.borderColor = "red"
+        document.getElementById("mailWrong").style.display = "block"
+}
+
+
+
+mailData.onfocus = function removeRed(){
+    document.getElementById("mailData").style.borderColor = "#fff"
+    document.getElementById("mailWrong").style.display = "none"
+}
+mailDataLogin.onfocus = function removeRed(){
+    document.getElementById("mailDataLogin").style.borderColor = "#fff"
+    document.getElementById("keyDataLogin").style.borderColor = "#fff"
+    document.getElementById("wrong").style.display = "none"
+}
+keyDataLogin.onfocus = function removeRed(){
+    document.getElementById("mailDataLogin").style.borderColor = "#fff"
+    document.getElementById("keyDataLogin").style.borderColor = "#fff"
+    document.getElementById("wrong").style.display = "none"
+}
+
+
 
 
 function hideShow(){
+    if(inputedMail !== firstMail && inputedMail !== secondMail){
     document.getElementById("signShow").style.display = "none"
     document.getElementById("loginShow").style.display = "block"
     document.getElementById("dataShow").style.display = "none"
@@ -95,6 +237,7 @@ function hideShow(){
     document.getElementById("statementHide").style.display = "flex"
     document.getElementById("formHide").style.display = "flex"
     document.getElementById("formShow").style.display = "none"
+    }
 }
 
 function showHide(){
@@ -107,6 +250,20 @@ function showHide(){
     document.getElementById("formHide").style.display = "none"
     document.getElementById("formShow").style.display = "flex"
 }
+
+
+
+let checkSpeed = 0;
+function getSavedExp(){
+    savedTotalExp = Number(gotTotalExp);
+    totalExp += savedTotalExp;
+    checkSpeed = savedTotalExp;
+    expCalc();
+}
+
+
+
+
 
 const selectTeam = document.querySelectorAll(".teams")
 
@@ -352,43 +509,7 @@ const userScoringSecond =(userChoice) => {
     document.getElementById("requiredruns").textContent =  userName + " " + " need " +((compTotalScore - userTotalScore) +1 ) + " "  +"runs in" +" " + totalBalls + " " + "balls" + " " + "to win";
     }
     /********************************************* */
-    // if(userTotalScore >=  firstTarget && overNumber != totalOvers){
-    //       if((totalWickets - userWicket) >= 5 ){
-    //         totalExp += 10 ;
-    //         savedTotalExp += 10; 
-    //       }
 
-    //     totalExp += 25;
-    //     savedTotalExp += 25; 
-    //     console.log(savedTotalExp,"saved experience")
-    //     expCalc();
-
-        
-    //     if((totalWickets-userWicket) ==1){
-    //         matchResult = userName + " " +" WON BY " + (totalWickets-userWicket) + " Wicket"
-    //     }
-    //     else {
-    //             matchResult =  userName + " " +" WON BY " + (totalWickets-userWicket) + " Wickets"
-    //             }
-    //             document.getElementById("matchResult").textContent = matchResult;
-    //             document.getElementById("requiredruns").style.display = "none"
-    //             document.getElementById("optionShow").style.display = "none"
-    //             document.getElementById("matchResult").style.display = "block"
-    //             document.getElementById("play-again").style.display = "block"
-    //             /********************************************** */
-    //             /********************************************** */
-    
-    //             /********************************************** */
-    //             /********************************************** */
-    //         }
-            // else if(userTotalScore == (firstTarget - 1)){
-            //     matchResult = "MATCH DRAWN"
-                // document.getElementById("matchResult").textContent = matchResult;
-                // document.getElementById("requiredruns").style.display = "none"
-                // document.getElementById("optionShow").style.display = "none"
-                // document.getElementById("matchResult").style.display = "block"
-                // document.getElementById("play-again").style.display = "block"
-            // }
             console.log(userTotalScore)
 
 /******************************************** */
@@ -417,6 +538,9 @@ if(overNumber == totalOvers){
         matchResult = compFullName + " "+ "WON BY " + (compTotalScore - userTotalScore) + " Runs";
     }
      document.getElementById("play-again").style.display = "block"
+      document.getElementById("saveExit").style.display = "block"
+     document.getElementById("target-block").style.display = "none"
+     document.getElementById("requiredruns").style.display = "none"
 }
 
 else if (userTotalScore > compTotalScore){
@@ -446,12 +570,14 @@ else if (userTotalScore > compTotalScore){
     /********************************************************** */
     /********************************************************** */
      document.getElementById("play-again").style.display = "block"
+      document.getElementById("saveExit").style.display = "block"
 }
 
 else if(userTotalScore == (firstTarget - 1)){
     matchResult = "MATCH DRAWN"
     // document.getElementById("matchResult").textContent = matchResult;
          document.getElementById("play-again").style.display = "block"
+          document.getElementById("saveExit").style.display = "block"
 
          /********************************************** */
          /********************************************** */
@@ -468,8 +594,10 @@ console.log(userTotalScore)
 document.getElementById("matchResult").textContent = matchResult;
 document.getElementById("matchResult").style.display = "block"
 document.getElementById("requiredruns").style.display = "none"
+document.getElementById("target-block").style.display = "none"
 document.getElementById("optionShow").style.display = "none"
 document.getElementById("play-again").style.display = "block"
+ document.getElementById("saveExit").style.display = "block"
 }
 
 else if(userTotalScore >=  firstTarget && overNumber != totalOvers){
@@ -492,9 +620,11 @@ else if(userTotalScore >=  firstTarget && overNumber != totalOvers){
           }
           document.getElementById("matchResult").textContent = matchResult;
           document.getElementById("requiredruns").style.display = "none"
+         document.getElementById("target-block").style.display = "none"
           document.getElementById("optionShow").style.display = "none"
           document.getElementById("matchResult").style.display = "block"
           document.getElementById("play-again").style.display = "block"
+           document.getElementById("saveExit").style.display = "block"
           /********************************************** */
           /********************************************** */
 
@@ -536,7 +666,9 @@ const userWicketSetupSecond =() => {
         document.getElementById("optionShow").style.display = "none"
         document.getElementById("matchResult").style.display = "block"
           document.getElementById("play-again").style.display = "block"
+           document.getElementById("saveExit").style.display = "block"
          document.getElementById("requiredruns").style.display = "none"
+         document.getElementById("target-block").style.display = "none"
     }
 
     hatTrick++;
@@ -596,28 +728,12 @@ if(overNumber == totalOvers){
 
 }
 
-// else if (userTotalScore > compTotalScore){
 
-//     // document.getElementById("requiredruns").style.display = "none"
-//     // document.getElementById("optionShow").style.display = "none"
-//     // document.getElementById("matchResult").style.display = "block"
-
-//     if((totalWickets-userWicket) ==1){
-//         matchResult = userName + " " +" WON BY " + (totalWickets-userWicket) + " Wicket"
-//     }
-//     else {
-//     matchResult =  userName + " " +" WON BY " + (totalWickets-userWicket) + " Wickets"
-//     }
-//     // document.getElementById("matchResult").textContent = matchResult;
-//     totalExp += 25;
-//     savedTotalExp += 25; 
-//     console.log(savedTotalExp,"saved experience")
-//     expCalc();
-// }
 
 else if(userTotalScore == (firstTarget - 1)){
     matchResult = "MATCH DRAWN"
              document.getElementById("play-again").style.display = "block"
+              document.getElementById("saveExit").style.display = "block"
     // document.getElementById("matchResult").textContent = matchResult;
     /******************************************* */
     /******************************************* */
@@ -637,7 +753,9 @@ document.getElementById("matchResult").textContent = matchResult;
 document.getElementById("optionShow").style.display = "none"
 document.getElementById("matchResult").style.display = "block"
    document.getElementById("play-again").style.display = "block"
+    document.getElementById("saveExit").style.display = "block"
  document.getElementById("requiredruns").style.display = "none"
+         document.getElementById("target-block").style.display = "none"
     }
 
 }
@@ -805,10 +923,12 @@ if(overNumberComp != totalOvers){
             matchResult = compFullName + " " + "WON BY " + (totalWickets-compWicket) + " Wickets"
         }
         document.getElementById("matchResult").textContent = matchResult;
+        document.getElementById("target-block").style.display = "none"
         document.getElementById("requiredruns").style.display = "none"
         document.getElementById("optionShowCpu").style.display = "none"
         document.getElementById("matchResult").style.display = "block"
         document.getElementById("play-again").style.display = "block"
+        document.getElementById("saveExit").style.display = "block"
             }
 
             // else if(compTotalScore == (firstTarget - 1)){
@@ -835,6 +955,7 @@ if(overNumberComp != totalOvers){
 
             if(compTotalScore >= firstTarget){
                 document.getElementById("requiredruns").style.display = "none"
+                        document.getElementById("target-block").style.display = "none"
                 // document.getElementById("optionShowCpu").style.display = "none"
                 // document.getElementById("matchResult").style.display = "block"
                 if((totalWickets-compWicket) ==1){
@@ -850,6 +971,7 @@ if(overNumberComp != totalOvers){
             else if(compTotalScore == (firstTarget - 1)){
                 matchResult = "MATCH DRAWN"
                     document.getElementById("requiredruns").style.display = "none"
+                            document.getElementById("target-block").style.display = "none"
                 document.getElementById("matchResult").textContent = matchResult;
                      document.getElementById("play-again").style.display = "block"
                      /****************************************** */
@@ -890,11 +1012,13 @@ if(overNumberComp != totalOvers){
             
             document.getElementById("matchResult").textContent = matchResult;
             document.getElementById("requiredruns").style.display = "none"
+                    document.getElementById("target-block").style.display = "none"
              // document.getElementById("comp-slash").style.display = "none"
              // document.getElementById("comp-wicket").style.display = "none"
              document.getElementById("optionShowCpu").style.display = "none"
              document.getElementById("matchResult").style.display = "block"
               document.getElementById("play-again").style.display = "block"
+              document.getElementById("saveExit").style.display = "block"
              
              }
          
@@ -997,7 +1121,9 @@ if(compWicket != totalWickets){
         document.getElementById("optionShowCpu").style.display = "none"
         document.getElementById("matchResult").style.display = "block"
         document.getElementById("requiredruns").style.display = "none"
-                        document.getElementById("play-again").style.display = "block"
+          document.getElementById("target-block").style.display = "none"
+       document.getElementById("play-again").style.display = "block"
+       document.getElementById("saveExit").style.display = "block"
     }
 
    else  if(compWicket == totalWickets && overNumberComp != totalOvers ){
@@ -1032,7 +1158,9 @@ if(compWicket != totalWickets){
         document.getElementById("optionShowCpu").style.display = "none"
         document.getElementById("matchResult").style.display = "block"
        document.getElementById("play-again").style.display = "block"
+          document.getElementById("saveExit").style.display = "block"
        document.getElementById("requiredruns").style.display = "none"
+       document.getElementById("target-block").style.display = "none"
     }
 
 }
@@ -1219,6 +1347,13 @@ scoreCpu.forEach((scoreOptionsCpu) => {
 const expCalc = () =>{
     // savedTotalExp += totalExp;
     // console.log(savedTotalExp,"saved experience")
+    let speed;
+    if(checkSpeed >= 100){
+speed = 500;
+    }
+    else{
+        speed = 100;
+    }
     setInterval(function exp(){
         if(expNumber < totalExp){
             expNumber += 1;
@@ -1240,7 +1375,7 @@ const expCalc = () =>{
                 document.getElementById("profile-exp-right").textContent = expRequired;
                 
             }
-    },300)
+    },'speed')
 
 }
 
@@ -1541,6 +1676,7 @@ PlayAgain.addEventListener("click", () => {
     document.getElementById("optionShowCpu").style.display = 'none';
     document.getElementById("blockuser").style.display = "none"
     document.getElementById("blockcomp").style.display = "none"
+    document.getElementById("saveExit").style.display = "none"
 
 
     document.getElementById("requiredruns").style.display = "none"
@@ -1592,4 +1728,31 @@ document.getElementById("PartnershipRuns").textContent = userPartnership;
 compPartnership = 0;
 document.getElementById("PartnershipRunsComp").textContent = compPartnership;
 matchResult = "";
+})
+
+
+let saveExperience = document.getElementById("saveExit")
+saveExperience.addEventListener('click',()=>{
+    if(account == 1){
+        localStorage.setItem('ExpGained',savedTotalExp)
+    }
+    else{
+        localStorage.setItem('ExpGained-2',savedTotalExp)
+    }
+let savedMessage = document.createElement("p");
+savedMessage.innerText = "Your Progress has been saved";
+savedMessage.classList = "saved-message"
+
+let mainContainer = document.getElementById("main-containerShow")
+mainContainer.classList.add("main-bright")
+saveBlock.append(savedMessage);
+
+let bodyColor = document.getElementById("allContent")
+bodyColor.style.backgroundColor = "rgba(0, 0, 0, 0.2)"
+setTimeout(function removeThings(){
+    savedMessage.classList.remove("saved-message")
+    mainContainer.classList.remove("main-bright")
+    bodyColor.style.backgroundColor = "white"
+    savedMessage.remove()
+},1500)
 })
