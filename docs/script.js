@@ -116,7 +116,8 @@ function getData(){
             checkSame();
         }
         else{
-            document.getElementById("mailWrong").textContent = "Accounts Limit Reached"
+            let accountLimit = "Accounts Limit Reached"
+            document.getElementById("mailWrong").textContent = accountLimit;
             document.getElementById("mailWrong").style.display = "block"
         }
         
@@ -216,6 +217,7 @@ function checkData(){
 
 let same;
 function checkSame(){
+     document.getElementById("mailWrong").textContent = "Email Already Exist!"
        document.getElementById("mailData").style.borderColor = "red"
         document.getElementById("mailWrong").style.display = "block"
 }
@@ -1372,7 +1374,7 @@ function expCalc(){
 speed = 5;
     }
     else{
-        speed = 300;
+        speed = 80;
     }
     setInterval(function exp(){
         if(expNumber < totalExp){
