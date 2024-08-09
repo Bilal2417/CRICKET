@@ -159,7 +159,7 @@ function getData(){
     }
 
     function  valueCheckSecond(){
-        if(permisson){
+        if(!secondMail){
             secondName =  localStorage.getItem("Name2")
             secondKey =  localStorage.getItem("Key2")
             secondMail =  localStorage.getItem("Mail2")
