@@ -1371,7 +1371,7 @@ function expCalc(){
     // savedTotalExp += totalExp;
     // console.log(savedTotalExp,"saved experience")
     if(checkSpeed >= 100){
-speed = 5;
+speed = 1;
     }
     else{
         speed = 80;
