@@ -106,18 +106,23 @@ function getData(){
             localStorage.setItem("Mail",inputedMail)
             localStorage.setItem("Account",1)
         }
-        else if(inputedMail == firstMail || inputedMail == secondMail){
-            checkSame();
-        }
         else if(!secondMail){
             localStorage.setItem("Name2",inputedName)
             localStorage.setItem("Key2",inputedKey)
             localStorage.setItem("Mail2",inputedMail)
             localStorage.setItem("Account",2)
         }
+        else if(inputedMail == firstMail || inputedMail == secondMail){
+            checkSame();
+        }
+        else{
+            document.getElementById("mailWrong").textContent = "Accounts Limit Reached"
+            document.getElementById("mailWrong").style.display = "block"
+        }
         
         if( firstMail == undefined){
             valueCheck();
+            accountCreated()
         }
         else{
             valueCheckSecond();
@@ -147,10 +152,18 @@ function getData(){
         }
     }
 
+    function accountCreated(){
+        document.getElementById("mailWrong").textContent = "Account Created"
+        document.getElementById("mailWrong").style.color = "green"
+        document.getElementById("mailWrong").style.display = "block"
+    }
+
     function  valueCheckSecond(){
-    secondName =  localStorage.getItem("Name2")
-    secondKey =  localStorage.getItem("Key2")
-    secondMail =  localStorage.getItem("Mail2")
+        if(!secondMail){
+            secondName =  localStorage.getItem("Name2")
+            secondKey =  localStorage.getItem("Key2")
+            secondMail =  localStorage.getItem("Mail2")
+        }
     if(secondName){
         const profileLetter = secondName[0];
         document.getElementById("profile-img-text").textContent = profileLetter;
@@ -201,10 +214,11 @@ function checkData(){
     }
 }
 
-
+let same;
 function checkSame(){
        document.getElementById("mailData").style.borderColor = "red"
         document.getElementById("mailWrong").style.display = "block"
+        same = true;
 }
 
 
@@ -228,7 +242,7 @@ keyDataLogin.onfocus = function removeRed(){
 
 
 function hideShow(){
-    if(inputedMail !== firstMail && inputedMail !== secondMail){
+
     document.getElementById("signShow").style.display = "none"
     document.getElementById("loginShow").style.display = "block"
     document.getElementById("dataShow").style.display = "none"
@@ -237,7 +251,7 @@ function hideShow(){
     document.getElementById("statementHide").style.display = "flex"
     document.getElementById("formHide").style.display = "flex"
     document.getElementById("formShow").style.display = "none"
-    }
+
 }
 
 function showHide(){
@@ -565,6 +579,7 @@ else if (userTotalScore > compTotalScore){
 
     totalExp += 25;
     savedTotalExp += 25; 
+    checkSpeed = 0;
     console.log(savedTotalExp,"saved experience")
     expCalc();
     /********************************************************** */
@@ -584,6 +599,7 @@ else if(userTotalScore == (firstTarget - 1)){
          /********************************************** */
          totalExp += 5;
          savedTotalExp += 5; 
+         checkSpeed = 0;
          console.log(savedTotalExp,"saved experience")
          expCalc();
             /************************************************** */
@@ -608,6 +624,7 @@ else if(userTotalScore >=  firstTarget && overNumber != totalOvers){
 
   totalExp += 25;
   savedTotalExp += 25; 
+  checkSpeed = 0;
   console.log(savedTotalExp,"saved experience")
   expCalc();
 
@@ -740,6 +757,7 @@ else if(userTotalScore == (firstTarget - 1)){
     /******************************************* */
     totalExp += 5;
     savedTotalExp += 5; 
+    checkSpeed = 0;
     console.log(savedTotalExp,"saved experience")
     expCalc();
        /************************************************** */
@@ -980,7 +998,7 @@ if(overNumberComp != totalOvers){
                      totalExp += 5;
                      savedTotalExp += 5; 
                      console.log(savedTotalExp,"saved experience")
-                     
+                     checkSpeed = 0;
                      expCalc();
                         /************************************************** */
                         /************************************************** */
@@ -1007,6 +1025,7 @@ if(overNumberComp != totalOvers){
                 totalExp += 25;
                 savedTotalExp += 25; 
                 console.log(savedTotalExp,"saved experience")
+                checkSpeed = 0;
                 expCalc();
             }
             
@@ -1108,6 +1127,7 @@ if(compWicket != totalWickets){
 
                 totalExp += 25;
                 savedTotalExp += 25; 
+                checkSpeed = 0;
                 expCalc();
 
                    /********************************************* */
@@ -1144,6 +1164,7 @@ if(compWicket != totalWickets){
 
                 totalExp += 25;
                 savedTotalExp += 25; 
+                checkSpeed = 0;
                 expCalc();
 
                 /********************************************* */
@@ -1344,15 +1365,15 @@ scoreCpu.forEach((scoreOptionsCpu) => {
 /******************************************************** */
 
 
-const expCalc = () =>{
+let speed;
+function expCalc(){
     // savedTotalExp += totalExp;
     // console.log(savedTotalExp,"saved experience")
-    let speed;
     if(checkSpeed >= 100){
-speed = 500;
+speed = 5;
     }
     else{
-        speed = 100;
+        speed = 300;
     }
     setInterval(function exp(){
         if(expNumber < totalExp){
@@ -1375,7 +1396,7 @@ speed = 500;
                 document.getElementById("profile-exp-right").textContent = expRequired;
                 
             }
-    },'speed')
+    },speed)
 
 }
 
