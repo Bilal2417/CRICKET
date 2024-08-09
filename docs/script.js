@@ -110,7 +110,7 @@ function getData(){
             localStorage.setItem("Name2",inputedName)
             localStorage.setItem("Key2",inputedKey)
             localStorage.setItem("Mail2",inputedMail)
-            localStorage.setItem("Account",2)
+            localStorage.setItem("AccountSecond",2)
         }
         else if(inputedMail === firstMail || inputedMail === secondMail){
             checkSame();
@@ -127,12 +127,12 @@ function getData(){
         }
         else{
             valueCheckSecond();
+            accountCreated()
         }
 
     }
     valueCheck();
     valueCheckSecond();
-
 
 
     function valueCheck(){
