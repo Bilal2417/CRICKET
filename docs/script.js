@@ -112,7 +112,7 @@ function getData(){
             localStorage.setItem("Mail2",inputedMail)
             localStorage.setItem("Account",2)
         }
-        else if(inputedMail == firstMail || inputedMail == secondMail){
+        else if(inputedMail === firstMail || inputedMail === secondMail){
             checkSame();
         }
         else{
@@ -159,7 +159,7 @@ function getData(){
     }
 
     function  valueCheckSecond(){
-        if(!secondMail){
+        if(permisson){
             secondName =  localStorage.getItem("Name2")
             secondKey =  localStorage.getItem("Key2")
             secondMail =  localStorage.getItem("Mail2")
@@ -193,12 +193,12 @@ function checkData(){
     else if(getMail === secondMail){
         
         if(getPass === secondKey){
-            savedTotalExp = localStorage.getItem("ExpGained-2")
-            displayTeam()
-            if(savedTotalExp){
+            gotTotalExp = localStorage.getItem("ExpGained-2")
+            if(gotTotalExp){
                 getSavedExp();
             }
             account = 2;
+            displayTeam()
         }
             else{
                 document.getElementById("mailDataLogin").style.borderColor = "red"
@@ -218,7 +218,6 @@ let same;
 function checkSame(){
        document.getElementById("mailData").style.borderColor = "red"
         document.getElementById("mailWrong").style.display = "block"
-        same = true;
 }
 
 
