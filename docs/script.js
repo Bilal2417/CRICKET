@@ -695,6 +695,10 @@ else if (userTotalScore > compTotalScore){
         totalExp += 10 ;
         savedTotalExp += 10; 
       }
+    if((totalWickets - userWicket) >= 10 ){
+        totalExp += 20 ;
+        savedTotalExp += 20; 
+      }
     // document.getElementById("matchResult").textContent = matchResult;
     /********************************************************** */
     /********************************************************** */
@@ -1198,6 +1202,8 @@ const compWicketSetup = () => {
     else if(hatTrick == 3){
         document.getElementById("on-hat-trick").style.display = "none"
         document.getElementById("hattrick").style.display = "block"
+        totalExp += 5;
+        savedTotalExp += 5; 
     }
     else{
         document.getElementById("hat-trick").style.display = "none"
@@ -1243,6 +1249,14 @@ if(compWicket != totalWickets){
             totalExp += 10;
             savedTotalExp += 10; 
          }
+        if((userTotalScore - compTotalScore) >= 100 ){
+            totalExp += 10;
+            savedTotalExp += 10; 
+         }
+        if((userTotalScore - compTotalScore) >= 200 ){
+            totalExp += 20;
+            savedTotalExp += 20; 
+         }
                 /********************************************* */
                 /********************************************* */
                 /********************************************* */
@@ -1279,6 +1293,14 @@ if(compWicket != totalWickets){
         if((userTotalScore - compTotalScore) >= 50 ){
             totalExp += 10;
             savedTotalExp += 10; 
+         }
+         if((userTotalScore - compTotalScore) >= 100 ){
+            totalExp += 10;
+            savedTotalExp += 10; 
+         }
+        if((userTotalScore - compTotalScore) >= 200 ){
+            totalExp += 20;
+            savedTotalExp += 20; 
          }
                 /********************************************* */
                 /********************************************* */
@@ -1413,6 +1435,8 @@ if(hatTrick == 2){
 else if(hatTrick == 3){
     document.getElementById("on-hat-trick").style.display = "none"
     document.getElementById("hattrick").style.display = "block"
+    totalExp += 5;
+    savedTotalExp += 5; 
 }
 else{
     document.getElementById("hat-trick").style.display = "none"
