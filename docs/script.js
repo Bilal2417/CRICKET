@@ -63,6 +63,7 @@ document.getElementById("profile-exp-right").textContent = expRequired;
 /*********************************************** */
 
 
+
 function displayTeam(){
     document.getElementById("signForm").style.display = "none"
     let profile = document.querySelector(".profile-block")
@@ -94,6 +95,9 @@ let firstKey;
 let secondName;
 let secondKey;
 let secondMail;
+let thirdName;
+let thirdKey;
+let thirdMail;
 
 function getData(){
 
@@ -112,7 +116,13 @@ function getData(){
             localStorage.setItem("Mail2",inputedMail)
             localStorage.setItem("AccountSecond",2)
         }
-        else if(inputedMail === firstMail || inputedMail === secondMail){
+        else if(!thirdMail){
+            localStorage.setItem("Name3",inputedName)
+            localStorage.setItem("Key3",inputedKey)
+            localStorage.setItem("Mail3",inputedMail)
+            localStorage.setItem("AccountThird",3)
+        }
+        else if(inputedMail == firstMail || inputedMail == secondMail || inputedMail == thirdMail){
             checkSame();
         }
         else{
@@ -125,15 +135,19 @@ function getData(){
             valueCheck();
             accountCreated()
         }
-        else{
+        else if(secondMail == undefined){
             valueCheckSecond();
+            accountCreated()
+        }
+        else if(thirdMail == undefined){
+            valueCheckThird();
             accountCreated()
         }
 
     }
     valueCheck();
     valueCheckSecond();
-
+    valueCheckThird()
 
     function valueCheck(){
 
@@ -142,10 +156,7 @@ function getData(){
             firstName =  localStorage.getItem("Name")
             firstKey =  localStorage.getItem("Key")
             firstMail =  localStorage.getItem("Mail")
-            if(firstName){ 
-                const profileLetter = firstName[0];
-                document.getElementById("profile-img-text").textContent = profileLetter;
-            }
+
         }
 
         if(firstMail){
@@ -165,10 +176,15 @@ function getData(){
             secondKey =  localStorage.getItem("Key2")
             secondMail =  localStorage.getItem("Mail2")
         }
-    if(secondName){
-        const profileLetter = secondName[0];
-        document.getElementById("profile-img-text").textContent = profileLetter;
-    }
+
+}
+    function  valueCheckThird(){
+        if(!thirdMail){
+            thirdName =  localStorage.getItem("Name3")
+            thirdKey =  localStorage.getItem("Key3")
+            thirdMail =  localStorage.getItem("Mail3")
+        }
+
 }
 
 let getMail;
@@ -178,6 +194,10 @@ function checkData(){
     getPass = document.getElementById("keyDataLogin").value
     if(getMail === firstMail ){
         if(getPass === firstKey){
+            if(firstName){ 
+                const profileLetter = firstName[0];
+                document.getElementById("profile-img-text").textContent = profileLetter;
+            }
             gotTotalExp = localStorage.getItem("ExpGained")
             if(gotTotalExp){
                 getSavedExp();
@@ -194,11 +214,36 @@ function checkData(){
     else if(getMail === secondMail){
         
         if(getPass === secondKey){
+            if(secondName){
+                const profileLetter = secondName[0];
+                document.getElementById("profile-img-text").textContent = profileLetter;
+            }
             gotTotalExp = localStorage.getItem("ExpGained-2")
             if(gotTotalExp){
                 getSavedExp();
             }
             account = 2;
+            displayTeam()
+        }
+            else{
+                document.getElementById("mailDataLogin").style.borderColor = "red"
+                document.getElementById("keyDataLogin").style.borderColor = "red"
+                document.getElementById("wrong").style.display = "block"
+            }
+        }
+
+    else if(getMail === thirdMail){
+        
+        if(getPass === thirdKey){
+            if(thirdName){
+                const profileLetter = thirdName[0];
+                document.getElementById("profile-img-text").textContent = profileLetter;
+            }
+            gotTotalExp = localStorage.getItem("ExpGained-3")
+            if(gotTotalExp){
+                getSavedExp();
+            }
+            account = 3;
             displayTeam()
         }
             else{
@@ -215,7 +260,6 @@ function checkData(){
     }
 }
 
-let same;
 function checkSame(){
      document.getElementById("mailWrong").textContent = "Email Already Exist!"
        document.getElementById("mailData").style.borderColor = "red"
@@ -275,15 +319,33 @@ function getSavedExp(){
     checkSpeed = savedTotalExp;
     expCalc();
 }
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
+/**************************************************** */
 
 
 
 
+function unlockedTeams(){
 
-const selectTeam = document.querySelectorAll(".teams")
-
-selectTeam.forEach((teams) => {
-
+    const selectTeam = document.querySelectorAll(".teams")
+    
+    
+    selectTeam.forEach((teams) => {
+        
     teams.addEventListener('click', () => {
         userName = event.target.textContent
         // userName = teams.getAttribute("id")
@@ -308,7 +370,66 @@ selectTeam.forEach((teams) => {
         genCompName(userName)
     })
 })
+}
 
+
+
+
+function lockedTeams(){
+    document.getElementById("australia").classList.remove("teams")
+    document.getElementById("afghanistan").classList.remove("teams")
+    document.getElementById("bangladesh").classList.remove("teams")
+    document.getElementById("england").classList.remove("teams")
+    document.getElementById("india").classList.remove("teams")
+    document.getElementById("newzealand").classList.remove("teams")
+    document.getElementById("netherlands").classList.remove("teams")
+    document.getElementById("pakistan").classList.remove("teams")
+    document.getElementById("southAfrica").classList.remove("teams")
+    document.getElementById("srilanka").classList.remove("teams")
+    document.getElementById("windies").classList.remove("teams")
+if(levelUp > 1){
+    document.getElementById("afghanistan").classList.remove("opacity")
+    document.getElementById("afghanistan").classList.add("teams")
+    document.getElementById("bangladesh").classList.remove("opacity")
+    document.getElementById("bangladesh").classList.add("teams")
+}
+  if(levelUp > 2){
+    document.getElementById("srilanka").classList.remove("opacity")
+    document.getElementById("srilanka").classList.add("teams")
+}
+  if(levelUp > 3){
+      document.getElementById("netherlands").classList.remove("opacity")
+      document.getElementById("netherlands").classList.add("teams")
+      document.getElementById("srilanka").classList.remove("opacity")
+      document.getElementById("srilanka").classList.add("teams")
+    }
+    if(levelUp > 4){
+        document.getElementById("windies").classList.remove("opacity")
+        document.getElementById("windies").classList.add("teams")
+}
+    if(levelUp > 5){
+      document.getElementById("southAfrica").classList.remove("opacity")
+      document.getElementById("southAfrica").classList.add("teams")
+      document.getElementById("newzealand").classList.remove("opacity")
+      document.getElementById("newzealand").classList.add("teams")
+}
+    if(levelUp > 6){
+      document.getElementById("pakistan").classList.remove("opacity")
+      document.getElementById("pakistan").classList.add("teams")
+      document.getElementById("england").classList.remove("opacity")
+      document.getElementById("england").classList.add("teams")
+    }
+    if(levelUp > 7){
+        document.getElementById("india").classList.remove("opacity")
+        document.getElementById("india").classList.add("teams")
+    }
+    if(levelUp > 8){
+        document.getElementById("australia").classList.remove("opacity")
+        document.getElementById("australia").classList.add("teams")  
+}
+
+unlockedTeams()
+}
 
 var element;
 const genCompName = (userName) => {
@@ -1367,11 +1488,11 @@ scoreCpu.forEach((scoreOptionsCpu) => {
 
 
 let speed;
-function expCalc(){
+const expCalc = () =>{
     // savedTotalExp += totalExp;
     // console.log(savedTotalExp,"saved experience")
     if(checkSpeed >= 100){
-speed = 1;
+speed = 0.01;
     }
     else{
         speed = 80;
@@ -1396,9 +1517,9 @@ speed = 1;
                 document.getElementById("level-number").textContent = levelUp;
                 document.getElementById("profile-exp-right").textContent = expRequired;
                 
-            }
+            }    
+                lockedTeams()
     },speed)
-
 }
 
 /******************************************************** */
@@ -1750,6 +1871,7 @@ document.getElementById("PartnershipRuns").textContent = userPartnership;
 compPartnership = 0;
 document.getElementById("PartnershipRunsComp").textContent = compPartnership;
 matchResult = "";
+lockedTeams()
 })
 
 
@@ -1758,8 +1880,11 @@ saveExperience.addEventListener('click',()=>{
     if(account == 1){
         localStorage.setItem('ExpGained',savedTotalExp)
     }
-    else{
+    else if(account == 2){
         localStorage.setItem('ExpGained-2',savedTotalExp)
+    }
+    else if(account == 3){
+        localStorage.setItem('ExpGained-3',savedTotalExp)
     }
 let savedMessage = document.createElement("p");
 savedMessage.innerText = "Your Progress has been saved";
@@ -1777,4 +1902,5 @@ setTimeout(function removeThings(){
     bodyColor.style.backgroundColor = "white"
     savedMessage.remove()
 },1500)
+lockedTeams()
 })
