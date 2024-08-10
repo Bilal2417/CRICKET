@@ -48,6 +48,7 @@ let totalBalls;
 /*********************************************** */
 /*********************************************** */
 /*********************************************** */
+let checkSpeed ;
 let expNumber = 0;
 let totalExp = 0;
 let expRequired = 200;
@@ -310,14 +311,11 @@ function showHide(){
     document.getElementById("formShow").style.display = "flex"
 }
 
-
-
-let checkSpeed = 0;
 function getSavedExp(){
     savedTotalExp = Number(gotTotalExp);
     totalExp += savedTotalExp;
     checkSpeed = savedTotalExp;
-    expCalc();
+    expCalc(checkSpeed);
 }
 /**************************************************** */
 /**************************************************** */
@@ -752,7 +750,7 @@ else if(userTotalScore >=  firstTarget && overNumber != totalOvers){
   savedTotalExp += 25; 
   checkSpeed = 0;
   console.log(savedTotalExp,"saved experience")
-  expCalc();
+  expCalc(checkSpeed);
 
   
   if((totalWickets-userWicket) ==1){
@@ -885,7 +883,7 @@ else if(userTotalScore == (firstTarget - 1)){
     savedTotalExp += 5; 
     checkSpeed = 0;
     console.log(savedTotalExp,"saved experience")
-    expCalc();
+    expCalc(checkSpeed);
        /************************************************** */
        /************************************************** */
        /************************************************** */
@@ -1125,7 +1123,7 @@ if(overNumberComp != totalOvers){
                      savedTotalExp += 5; 
                      console.log(savedTotalExp,"saved experience")
                      checkSpeed = 0;
-                     expCalc();
+                     expCalc(checkSpeed);
                         /************************************************** */
                         /************************************************** */
                         /************************************************** */
@@ -1152,7 +1150,7 @@ if(overNumberComp != totalOvers){
                 savedTotalExp += 25; 
                 console.log(savedTotalExp,"saved experience")
                 checkSpeed = 0;
-                expCalc();
+                expCalc(checkSpeed);
             }
             
             document.getElementById("matchResult").textContent = matchResult;
@@ -1264,7 +1262,7 @@ if(compWicket != totalWickets){
                 totalExp += 25;
                 savedTotalExp += 25; 
                 checkSpeed = 0;
-                expCalc();
+                expCalc(checkSpeed);
 
                    /********************************************* */
                    /********************************************* */
@@ -1309,7 +1307,7 @@ if(compWicket != totalWickets){
                 totalExp += 25;
                 savedTotalExp += 25; 
                 checkSpeed = 0;
-                expCalc();
+                expCalc(checkSpeed);
 
                 /********************************************* */
                 /********************************************* */
@@ -1512,14 +1510,15 @@ scoreCpu.forEach((scoreOptionsCpu) => {
 
 
 let speed;
-const expCalc = () =>{
+const expCalc = (checkSpeed) =>{
     // savedTotalExp += totalExp;
     // console.log(savedTotalExp,"saved experience")
     if(checkSpeed >= 100){
 speed = 0.01;
+checkSpeed = 1;
     }
     else{
-        speed = 80;
+        speed = 1000;
     }
     setInterval(function exp(){
         if(expNumber < totalExp){
@@ -1541,9 +1540,9 @@ speed = 0.01;
                 document.getElementById("level-number").textContent = levelUp;
                 document.getElementById("profile-exp-right").textContent = expRequired;
                 
-            }    
                 lockedTeams()
-    },speed)
+            }    
+        },speed)
 }
 
 /******************************************************** */
