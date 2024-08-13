@@ -509,11 +509,13 @@ if(overNumber == totalOvers){
     
     document.getElementById("userMini").style.color = "rgb(37,184,37)"
     document.getElementById("userMini").textContent = userMiniScore;
+    
     setTimeout(function elementShow(){
          element = document.getElementById("userMini")
         element.classList.remove("user-mini-score-show")
     },850)
     hatTrick = 0;
+
     document.getElementById("hat-trick").style.display = "none"
     document.getElementById("on-hat-trick").style.display = "none"
     document.getElementById("hattrick").style.display = "none"
