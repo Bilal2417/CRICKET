@@ -100,12 +100,13 @@ let thirdName;
 let thirdKey;
 let thirdMail;
 
+    
 function getData(){
 
-        inputedName = document.getElementById("nameData").value
-        inputedKey = document.getElementById("keyData").value
-        inputedMail = document.getElementById("mailData").value
-         if(!firstMail){
+    inputedName = document.getElementById("nameData").value
+    inputedKey = document.getElementById("keyData").value
+    inputedMail = document.getElementById("mailData").value
+     if(!firstMail){
             localStorage.setItem("Name",inputedName)
             localStorage.setItem("Key",inputedKey)
             localStorage.setItem("Mail",inputedMail)
@@ -144,6 +145,7 @@ function getData(){
             valueCheckThird();
             accountCreated()
         }
+
 
     }
     valueCheck();
