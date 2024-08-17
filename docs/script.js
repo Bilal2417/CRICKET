@@ -338,7 +338,7 @@ function getSavedExp(){
 
 
 
-unlockedTeams()
+// unlockedTeams()
 function unlockedTeams(){
 
     const selectTeam = document.querySelectorAll(".teams")
