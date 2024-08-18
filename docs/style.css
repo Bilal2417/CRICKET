@@ -90,6 +90,22 @@ header{
     outline: none;
     border: 3px solid #fff;
 }
+.checkbox-block{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#showPass{
+    width: 15px;
+    height: 15px;
+}
+label,
+#showPass:hover{
+    cursor: pointer;
+}
+label{
+    margin-bottom: 0px;
+}
 #wrong,
 #mailWrong{
     /* text-align: left; */

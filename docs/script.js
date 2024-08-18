@@ -25,17 +25,7 @@ let overBallComp = 0;
 
 let userPartnership = 0;
 let compPartnership = 0;
-// let userNameFull = prompt("Enter your name: ")
-// let userUpper = userNameFull.toUpperCase()
-// let userTrim = userUpper.substring(0,15)
-// let userName = userTrim.trimStart()
-// console.log(userName)
 
-
-// if(userName =="COMP"){
-    // let userName = "YOU"
-    // document.getElementById("user-name").textContent = userName;
-    // }
     let firstTarget = 0;
     const score = document.querySelectorAll(".scoreOptions");
     
@@ -55,10 +45,8 @@ let expRequired = 200;
 let savedTotalExp = 0;
 let gotTotalExp;
 let levelUp = 1;
-// let totalExp = +prompt("enter totalExp: ")
-// let expNumber = +prompt("enter expNumber: ")
-// let levelUp = +prompt("enter levelUp: ")
-// let expRequired = +prompt("enter expRequired: ")
+
+
 document.getElementById("profile-exp-right").textContent = expRequired;
 /*********************************************** */
 /*********************************************** */
@@ -100,72 +88,72 @@ let thirdName;
 let thirdKey;
 let thirdMail;
 
-    
+showPass.onfocus = function showPassword(){
+    if(keyData.type == "text"){
+        keyData.type = "password"
+    }
+    else{
+        keyData.type = "text"
+    }
+}
+showPassLogin.onfocus = function showPassword(){
+    if(keyDataLogin.type == "text"){
+        keyDataLogin.type = "password"
+    }
+    else{
+        keyDataLogin.type = "text"
+    }
+}
+
+// function removeSpace(){
+//     if(keyData.value.includes(" ")){
+//     keyData.style.borderColor = "red"
+//     let notAllowed = "Spaces not allowed"
+//     mailWrong.textContent = notAllowed;
+//     document.getElementById("mailWrong").style.display = "block"
+// }
+// else{
+//     keyData.style.borderColor = "#fff"
+//         document.getElementById("mailWrong").style.display = "none"
+
+//     }
+// }
+class Profile{
+    name 
+    email
+    password
+    level
+    experince
+}
+let profileCalculation = []
+if(profileCalculation.length == 0){
+    profileCalculation = JSON.parse(localStorage.getItem("Data"))
+}
 function getData(){
 
-    inputedName = document.getElementById("nameData").value
-    inputedKey = document.getElementById("keyData").value
-    inputedMail = document.getElementById("mailData").value
-     if(!firstMail){
-            localStorage.setItem("Name",inputedName)
-            localStorage.setItem("Key",inputedKey)
-            localStorage.setItem("Mail",inputedMail)
-            localStorage.setItem("Account",1)
-        }
-        else if(!secondMail){
-            localStorage.setItem("Name2",inputedName)
-            localStorage.setItem("Key2",inputedKey)
-            localStorage.setItem("Mail2",inputedMail)
-            localStorage.setItem("AccountSecond",2)
-        }
-        else if(!thirdMail){
-            localStorage.setItem("Name3",inputedName)
-            localStorage.setItem("Key3",inputedKey)
-            localStorage.setItem("Mail3",inputedMail)
-            localStorage.setItem("AccountThird",3)
-        }
-        else if(inputedMail == firstMail || inputedMail == secondMail || inputedMail == thirdMail){
-            checkSame();
-        }
-        else{
-            let accountLimit = "Accounts Limit Reached"
-            document.getElementById("mailWrong").textContent = accountLimit;
-            document.getElementById("mailWrong").style.display = "block"
-        }
-        
-        if( firstMail == undefined){
-            valueCheck();
-            accountCreated()
-        }
-        else if(secondMail == undefined){
-            valueCheckSecond();
-            accountCreated()
-        }
-        else if(thirdMail == undefined){
-            valueCheckThird();
-            accountCreated()
-        }
+    let getProfileData = new Profile();
+    getProfileData.name = nameData.value;
+    getProfileData.password = keyData.value;
+    getProfileData.email = mailData.value;
 
+    var checkProfileDuplication = profileCalculation.find(function (ProfileValues){
+        if(ProfileValues.email == mailData.value){
+        return true
+        }
+    })  
+
+        if(checkProfileDuplication){
+            checkSame()
+        }
+else{
+    getProfileData.experince = 0;
+    profileCalculation.push(getProfileData)
+    accountCreated()
+    localStorage.setItem("Data" ,JSON.stringify(profileCalculation))
+}
 
     }
-    valueCheck();
-    valueCheckSecond();
-    valueCheckThird()
 
-    function valueCheck(){
-
-
-        if( firstMail == undefined){
-            firstName =  localStorage.getItem("Name")
-            firstKey =  localStorage.getItem("Key")
-            firstMail =  localStorage.getItem("Mail")
-
-        }
-
-        if(firstMail){
-            permisson = true;
-        }
-    }
 
     function accountCreated(){
         document.getElementById("mailWrong").textContent = "Account Created"
@@ -173,103 +161,49 @@ function getData(){
         document.getElementById("mailWrong").style.display = "block"
     }
 
-    function  valueCheckSecond(){
-        if(!secondMail){
-            secondName =  localStorage.getItem("Name2")
-            secondKey =  localStorage.getItem("Key2")
-            secondMail =  localStorage.getItem("Mail2")
-        }
 
-}
-    function  valueCheckThird(){
-        if(!thirdMail){
-            thirdName =  localStorage.getItem("Name3")
-            thirdKey =  localStorage.getItem("Key3")
-            thirdMail =  localStorage.getItem("Mail3")
-        }
-
-}
 
 let getMail;
 let getPass;
+let checkIndex;
 function checkData(){
-    getMail = document.getElementById("mailDataLogin").value
-    getPass = document.getElementById("keyDataLogin").value
-    if(getMail === firstMail ){
-        if(getPass === firstKey){
-            if(firstName){ 
-                const profileLetter = firstName[0];
+    profileCalculation = JSON.parse(localStorage.getItem("Data"))
+    profileCalculation.forEach(function(checkValues,index){
+        if(mailDataLogin.value ==checkValues.email ){
+            if(keyDataLogin.value == checkValues.password){
+                const profileLetter = checkValues.name[0];
                 document.getElementById("profile-img-text").textContent = profileLetter;
-            }
-            gotTotalExp = localStorage.getItem("ExpGained")
-            if(gotTotalExp){
+                gotTotalExp = checkValues.experince;
+                checkIndex = index;
                 getSavedExp();
+                displayTeam()
             }
-            account = 1;
-            displayTeam()
-        }
+
         else{
-            document.getElementById("mailDataLogin").style.borderColor = "red"
-            document.getElementById("keyDataLogin").style.borderColor = "red"
-            document.getElementById("wrong").style.display = "block"
-        }
-    }
-    else if(getMail === secondMail){
-        
-        if(getPass === secondKey){
-            if(secondName){
-                const profileLetter = secondName[0];
-                document.getElementById("profile-img-text").textContent = profileLetter;
-            }
-            gotTotalExp = localStorage.getItem("ExpGained-2")
-            if(gotTotalExp){
-                getSavedExp();
-            }
-            account = 2;
-            displayTeam()
-        }
-            else{
-                document.getElementById("mailDataLogin").style.borderColor = "red"
-                document.getElementById("keyDataLogin").style.borderColor = "red"
-                document.getElementById("wrong").style.display = "block"
-            }
+        wrongPassword()
         }
 
-    else if(getMail === thirdMail){
-        
-        if(getPass === thirdKey){
-            if(thirdName){
-                const profileLetter = thirdName[0];
-                document.getElementById("profile-img-text").textContent = profileLetter;
-            }
-            gotTotalExp = localStorage.getItem("ExpGained-3")
-            if(gotTotalExp){
-                getSavedExp();
-            }
-            account = 3;
-            displayTeam()
-        }
-            else{
-                document.getElementById("mailDataLogin").style.borderColor = "red"
-                document.getElementById("keyDataLogin").style.borderColor = "red"
-                document.getElementById("wrong").style.display = "block"
-            }
         }
 
-    else{
-        document.getElementById("mailDataLogin").style.borderColor = "red"
-        document.getElementById("keyDataLogin").style.borderColor = "red"
-        document.getElementById("wrong").style.display = "block"
-    }
+        else{
+            wrongPassword()
+        }
+        })
+
 }
 
 function checkSame(){
+    document.getElementById("mailDataLogin").style.borderColor = "red"
      document.getElementById("mailWrong").textContent = "Email Already Exist!"
        document.getElementById("mailData").style.borderColor = "red"
         document.getElementById("mailWrong").style.display = "block"
 }
 
-
+function wrongPassword(){
+    document.getElementById("mailDataLogin").style.borderColor = "red"
+    document.getElementById("keyDataLogin").style.borderColor = "red"
+    document.getElementById("wrong").style.display = "block"
+}
 
 mailData.onfocus = function removeRed(){
     document.getElementById("mailData").style.borderColor = "#fff"
@@ -338,7 +272,6 @@ function getSavedExp(){
 
 
 
-// unlockedTeams()
 function unlockedTeams(){
 
     const selectTeam = document.querySelectorAll(".teams")
@@ -461,8 +394,7 @@ function again(){
     genCompName()
 }
 const userScoring = (userChoice) => {
-    // tossStatement = displayTossWinner + "won the toss and chose to" + displayTossWinnerChoice;
-    // document.getElementById('tosswinner').textContent = tossStatement
+  
     if(userChoice == "one"){
         userScore = 1;
     }
@@ -593,10 +525,7 @@ overBall++;
 }
 
 const userScoringSecond =(userChoice) => {
-    // document.getElementById("requiredruns").style.display = "none"
-    //         document.getElementById("optionShow").style.display = "none"
-    //         document.getElementById("matchResult").style.display = "block"
-    //         document.getElementById("play-again").style.display = "block"
+
     if(userChoice == "one"){
         userScore = 1;
     }
@@ -1522,7 +1451,7 @@ speed = 0.01;
 checkSpeed = 1;
     }
     else{
-        speed = 1000;
+        speed = 100;
     }
     setInterval(function exp(){
         if(expNumber < totalExp){
@@ -1546,6 +1475,9 @@ checkSpeed = 1;
                 
                 lockedTeams()
             }    
+            else{
+                lockedTeams()
+            }
         },speed)
 }
 
@@ -1904,15 +1836,18 @@ lockedTeams()
 
 let saveExperience = document.getElementById("saveExit")
 saveExperience.addEventListener('click',()=>{
-    if(account == 1){
-        localStorage.setItem('ExpGained',savedTotalExp)
-    }
-    else if(account == 2){
-        localStorage.setItem('ExpGained-2',savedTotalExp)
-    }
-    else if(account == 3){
-        localStorage.setItem('ExpGained-3',savedTotalExp)
-    }
+
+profileCalculation[checkIndex].experince = savedTotalExp;
+localStorage.setItem("Data" , JSON.stringify(profileCalculation))
+    // if(account == 1){
+    //     localStorage.setItem('ExpGained',savedTotalExp)
+    // }
+    // else if(account == 2){
+    //     localStorage.setItem('ExpGained-2',savedTotalExp)
+    // }
+    // else if(account == 3){
+    //     localStorage.setItem('ExpGained-3',savedTotalExp)
+    // }
 let savedMessage = document.createElement("p");
 savedMessage.innerText = "Your Progress has been saved";
 savedMessage.classList = "saved-message"

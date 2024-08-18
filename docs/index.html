@@ -33,11 +33,10 @@
         <strong>Whats New!</strong>
         <!-- <strong class="update-size">MAJOR UPDATE</strong> -->
         <strong class="update-size">MAJOR UPDATE</strong>
-        <strong class="update-size">UPDATE VERSION 0.9</strong>
+        <strong class="update-size">UPDATE VERSION 1.0</strong>
     </div>
-        <p class="update-statement">ADDED <strong>PLAYER PROFILE</strong>  FEATURE</p>
-        <p class="update-statement">ADDED <strong> SAVE PROGRESS </strong>FEATURE IN GAME</p>
-        <p class="update-statement">INCREASED <strong> ACCOUNTS LIMIT </strong>TO 3</p>
+
+        <p class="update-statement">INCREASED <strong> ACCOUNTS LIMIT </strong>TO <strong>UNLIMITED</strong></p>
     </div>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -55,6 +54,10 @@
         <div class="inputs-block" id="dataShow">
             <input class="input-data" id="nameData" type="text" placeholder="Username" required minlength="7">
             <input class="input-data" id="keyData" type="password" placeholder="Password" required minlength="8">
+            <div class="checkbox-block">
+            <input id="showPass" type="checkbox" onc>
+<label for="showPass">Show Password</label>
+</div>
             <input class="input-data" id="mailData" type="email" placeholder="example@gmail.com" required>
             <p id="mailWrong">Email Already Exist!</p>
             <button class="signUp-button">Sign Up</button>
@@ -72,6 +75,10 @@
     <div class="inputs-block" id="dataHide">
         <input class="input-data input-data-login" id="mailDataLogin" type="email" placeholder="example@gmail.com" required>
         <input class="input-data input-data-login" id="keyDataLogin" type="password" placeholder="Password" required minlength="8">
+        <div class="checkbox-block">
+            <input id="showPassLogin" type="checkbox">
+<label for="showPassLogin">Show Password</label>
+</div>
         <p id="wrong">Email or Password is wrong</p>
         <button class="signUp-button">LOGIN</button>
         </div>
