@@ -126,7 +126,7 @@ class Profile{
     experince
 }
 let profileCalculation = []
-if(profileCalculation.length == 0){
+if(profileCalculation.length > 0){
     profileCalculation = JSON.parse(localStorage.getItem("Data"))
 }
 function getData(){
@@ -136,7 +136,7 @@ function getData(){
     getProfileData.password = keyData.value;
     getProfileData.email = mailData.value;
 
-    var checkProfileDuplication = profileCalculation.find(function (ProfileValues){
+    let checkProfileDuplication = profileCalculation.find(function (ProfileValues){
         if(ProfileValues.email == mailData.value){
         return true
         }
