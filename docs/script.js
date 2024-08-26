@@ -125,9 +125,21 @@ class Profile{
     level
     experince
 }
-let profileCalculation = []
-if(profileCalculation.length > 0){
-    profileCalculation = JSON.parse(localStorage.getItem("Data"))
+let profileCalculation = [
+    // {name : "Dummy",
+    //     email : "dummy100@gmail.com",
+    //     password : "itzdummy",
+    //     experince : 0
+    // }
+]
+document.onload = saveProfiles();
+function saveProfiles(){
+    let check = JSON.parse(localStorage.getItem("Data"))
+    if(check){
+        profileCalculation =check;
+    }
+    // if(profileCalculation.length > 0){
+    // }
 }
 function getData(){
 
@@ -151,7 +163,7 @@ else{
     accountCreated()
     localStorage.setItem("Data" ,JSON.stringify(profileCalculation))
 }
-
+saveProfiles()
     }
 
 
@@ -189,12 +201,13 @@ function checkData(){
             wrongPassword()
         }
         })
-
+        saveProfiles()
 }
 
 function checkSame(){
     document.getElementById("mailDataLogin").style.borderColor = "red"
      document.getElementById("mailWrong").textContent = "Email Already Exist!"
+     document.getElementById("mailWrong").style.color = "red"
        document.getElementById("mailData").style.borderColor = "red"
         document.getElementById("mailWrong").style.display = "block"
 }
@@ -1831,7 +1844,12 @@ compPartnership = 0;
 document.getElementById("PartnershipRunsComp").textContent = compPartnership;
 matchResult = "";
 lockedTeams()
+saveProfiles()
 })
+
+
+
+
 
 
 let saveExperience = document.getElementById("saveExit")
@@ -1839,6 +1857,7 @@ saveExperience.addEventListener('click',()=>{
 
 profileCalculation[checkIndex].experince = savedTotalExp;
 localStorage.setItem("Data" , JSON.stringify(profileCalculation))
+saveProfiles()
     // if(account == 1){
     //     localStorage.setItem('ExpGained',savedTotalExp)
     // }
